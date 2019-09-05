@@ -1,3 +1,4 @@
+# Problem Module lv1
 ## 1. Formulas Problem
 - How do we know it's reasonable? 
 - How well can it be expected to fit with reality? (exact or aprox)
@@ -43,9 +44,16 @@
   - We feels it's more of an apporximation than an exact equation because to get the area of a cylinder, we would need to involve $π$. $0.8$ is an approximation.
   - This equation is linear because we have two unknown
 * air drag force $= C* v^2 * A$
-  - 
+  - it's reasonable that drag increases as both velocity and cross section area increases. The same as feeling more air force drag with hand opened than closed. It's also reasonable that we would need a constant as shape of the object has an inpact on the air force drag. 
+  - This seems like an approximate equation as the equation is very simple and a calculation like this should be more advanced. Especially considering the shape of the object.
+  - this is a quadratic equation.
 * $weight = C* length^3$  (the constant C should be chosen depending on type of object e.g. persons, dogs, cars)
+  - Feels like a weak estimate of a weigth. Especially considering the constant $C$. For example. compare a chihuahua and a pug. THey are both the same length but obviously not the same weight.
+  - Since the length is cubed, the weigth will have a large variance for change in length.
 * $P[\text{getting heads when tossing a coin}] = 1/2$
+  - This we know to be true as long it is a fair coin. It has two sides with equal chance of getting chosen. Since we're dealing with probability, testing this out would probably not result in a 50/50 result. But as sample size increases we would get closes to $1/2$.
 
-max parcels size = 320
-if 100*weight+length < max parcel size
+## 2 
+Plotting the points in a graph we get: 
+![](graph2.png)
+- We could find a linear regression for the points by calculating $\beta_0$ and $\beta_1$ in the equation $y=\beta_0+\beta_1x$.$$
