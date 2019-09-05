@@ -56,4 +56,13 @@
 ## 2 
 Plotting the points in a graph we get: 
 ![](graph2.png)
-- We could find a linear regression for the points by calculating $\beta_0$ and $\beta_1$ in the equation $y=\beta_0+\beta_1x$.$$
+- By looking at the data in the plot we noticed that a linear equation would not do. By regonizing the pattarns of the data plots we tried plotting functions on the form $y = C * x ^ a$
+- We noticed that the functions we tested followed the data points rather well. So we created an equation system using distance as the value $y$ and time as the value for $x$ and solved it for $C$ and $a$. 
+- $C$ resulted in 2.94136 and $a$ resulted in 0.665185.
+- By plotting the function $y = 2.94136* x^{0.665185}$ with the data points we can see that the model is highly accurate.
+![](graph3.png)
+![](graph4.png)
+- The deviations from the known entries are small when using the model and since the data is not that proportional the deviation can be justified. Getting the distance from only the parameter time will lead to some deviation.
+- We are confident that model could calculate the distance given other values of T that are not in the table. There would still be a deviation in accuracy espically when the t increases.  
+
+
