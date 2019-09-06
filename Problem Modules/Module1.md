@@ -67,14 +67,41 @@ Plotting the points in a graph we get:
 
 
 ## 3
-Reasonably the peroid should be affected by the length $L$ of the line, mass $M$ and drop angle $\alpha$. To get the time we need velocity $v$ and distance $d$. We can get distance by using the formula for circumference of a circle: $O=2rπ$ then the distance formula is $d = 2rπ*\frac{\alpha}{360} = 2*L*π*\frac{\alpha}{360}$. This will be the distance from the drop point to the lowest point, so to get period distance we multiply this by $4$.
+We're thinking that the period should only be affected by length of the rope $L$ and the acceleration which is gravity in this case $g$. It is not affected by drop angle because a larger drop angle would give it more speed but more distance to cover, in comparison with a small drop angle which has a low speed but also less distance to cover. Reasonably then time $T$ is an expression dependent on $L$ and $g$. The mass is also a parameter that doesn't affect the period as a large mass gives it more speed on the way down but then also slows it down more on the way up. This can also be backed up by this equation.
 $$
-d = 4L\alpha
-$$
-We want an expression for $T$. To get this we use the formula for velocity $v=\frac{L}{T}$
-$$
-T=\frac{L}{v}=\frac{L}{sT}=\frac{L}{dT} \text{  -->  } T^2=\frac{L}{d}
+\text{We know that } F=mg \text{ and that } F=\frac{mL}{T^2}.
 $$
 $$
-T=\sqrt{\frac{L}{d}}=\sqrt{\frac{1}{4\alpha}}
+\text{Setting these equal to each other we get: } mg=\frac{mL}{T^2}
 $$
+$$
+\text{Resulting in: } g=\frac{L}{T^2}
+$$
+$g$ is only affected by length $L$ and time $T$. This results in the expression for $T$
+$$
+T^2=\frac{L}{g}=>T=\sqrt{\frac{L}{g}}
+$$
+If we do a dimensional analysis of this we know that $g$ is in the unit form $m/s^2$ and that $L$ is $m$. This means that we get $T=\sqrt{\frac{m}{m/s^2}}$. Cross out the $m$ and we get $T=\sqrt{s^2}=s$.
+
+Let's try an experiment. Dropping with a line length $1$ we get that
+$$
+T=\sqrt{\frac{1}{9.82}} = 0.32\text{ seconds.} 
+$$
+Then we tried with a physical pendulum and got the time $2.6$ seconds.
+
+Let's try another one, this time with $L=0.5$
+$$
+T=\sqrt{\frac{0.5}{9.82}}=0.23 \text{ seconds}
+$$
+testing this again with a physical pendulum we got 1.83 seconds. To get this right we need a constant.
+$$
+T=C*\sqrt{\frac{L}{g}}
+$$
+$$
+2.6=C*\sqrt{\frac{1}{9.82}} \text{ and } 1.83=C*\sqrt{\frac{0.5}{9.82}}
+$$
+For the first equation we get $C=8.15$ and the second we get $C=8.11$. This gives us this approxiamte equation
+$$
+T=8*\sqrt{\frac{L}{g}}
+$$
+## 4
