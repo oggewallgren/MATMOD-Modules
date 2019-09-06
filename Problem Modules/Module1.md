@@ -66,3 +66,15 @@ Plotting the points in a graph we get:
 - We are confident that model could calculate the distance given other values of T that are not in the table. There would still be a deviation in accuracy espically when the t increases.  
 
 
+## 3
+Reasonably the peroid should be affected by the length $L$ of the line, mass $M$ and drop angle $\alpha$. To get the time we need velocity $v$ and distance $d$. We can get distance by using the formula for circumference of a circle: $O=2rπ$ then the distance formula is $d = 2rπ*\frac{\alpha}{360} = 2*L*π*\frac{\alpha}{360}$. This will be the distance from the drop point to the lowest point, so to get period distance we multiply this by $4$.
+$$
+d = 4L\alpha
+$$
+We want an expression for $T$. To get this we use the formula for velocity $v=\frac{L}{T}$
+$$
+T=\frac{L}{v}=\frac{L}{sT}=\frac{L}{dT} \text{  -->  } T^2=\frac{L}{d}
+$$
+$$
+T=\sqrt{\frac{L}{d}}=\sqrt{\frac{1}{4\alpha}}
+$$
