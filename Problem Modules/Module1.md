@@ -48,7 +48,7 @@
   - This seems like an approximate equation as the equation is very simple and a calculation like this should be more advanced. Especially considering the shape of the object.
   - this is a quadratic equation.
 * $weight = C* length^3$  (the constant C should be chosen depending on type of object e.g. persons, dogs, cars)
-  - Feels like a weak estimate of a weigth. Especially considering the constant $C$. For example. compare a chihuahua and a pug. THey are both the same length but obviously not the same weight.
+  - Feels like a weak estimate of a weigth. Especially considering the constant $C$. For example. compare a chihuahua and a pug. They are both the same length but obviously not the same weight.
   - Since the length is cubed, the weigth will have a large variance for change in length.
 * $P[\text{getting heads when tossing a coin}] = 1/2$
   - This we know to be true as long it is a fair coin. It has two sides with equal chance of getting chosen. Since we're dealing with probability, testing this out would probably not result in a 50/50 result. But as sample size increases we would get closes to $1/2$.
@@ -127,6 +127,7 @@ This gives us the values $\beta_1=0.39$ and $\beta_0=-2.34$.
 We believe the quality of the model is acceptable considering the approximation is done with a linear equation. We know that this is a good way to get a good linear approximation. However because it's linear there can be large deviations.
 
 We start by plotting the points in a coordinate system. Instantly we feel that a quadratic equation would fit these points better. To find this equation we use mathematica Fit function and get the result $0.28612-0.000305635 x+0.0113034x^2$. We can motivate that this approximation fits better than the linear .with the least squares method. We see that the least squares sum for a quadradic equation is less than for a linear. 
+
 ![](up4plot1.png)
 
 As the image shows, a quadratic fit is much better than a linear fit.
