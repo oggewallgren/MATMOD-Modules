@@ -56,7 +56,7 @@
 ## 2 
 Plotting the points in a graph we get: 
 ![](graph2.png)
-- By looking at the data in the plot we noticed that a linear equation would not do. By regonizing the pattarns of the data plots we tried plotting functions on the form $y = C * x ^ a$
+- By looking at the data in the plot we noticed that a linear equation would not do. By regonizing the patterns of the data plots we tried plotting functions on the form $y = C * x ^ a$
 - We noticed that the functions we tested followed the data points rather well. So we created an equation system using distance as the value $y$ and time as the value for $x$ and solved it for $C$ and $a$. 
 - $C$ resulted in 2.94136 and $a$ resulted in 0.665185.
 - By plotting the function $y = 2.94136* x^{0.665185}$ with the data points we can see that the model is highly accurate.
@@ -109,11 +109,11 @@ $$
 ![](up4points1.jpeg)
 With a simple equation system we get an equation that fits the points. But when adding $(4,5)$ we see that it doesn't fit the curve of the function anymore. We would have to redo all the work and create another equation. This would have to be done for all new points pivoting from the function curve. 
 ### Least squares method
-The least squares method takes the error from each points in relation to the line, squares each error and then add them alla together. The "error" in this case is each point's $y$-distance from the linear approximation.
+The least squares method takes the error from each points in relation to the line, squares each error and then adds them all together. The "error" in this case is each point's $y$-distance from the linear approximation.
 
 The least square method is only useful when we have more data points than parameters, that is, when we have a overdetermined system because it gives an approximation to a system that rarely has a solution. When the data points are too incosistent and more than the parameters, we get this overdetermined system that has to be approximated to be described. If the case were that we had fewer data points than parameters, the system becomes under constraint and we would have an infinite number of solutions to describe it. Therefore making an approximation using the least squares method meaningless. 
 
-The Mathematica Fit function find the line that best fits the data.
+The Mathematica Fit function finds the line that best fits the data.
 ### b)
 To fit the points we use the formula for $\hat{Y}=\beta_0+\beta_1x$
 $$
@@ -126,7 +126,7 @@ This gives us the values $\beta_1=0.39$ and $\beta_0=-2.34$.
 
 We believe the quality of the model is acceptable considering the approximation is done with a linear equation. We know that this is a good way to get a good linear approximation. However because it's linear there can be large deviations.
 
-We start by plotting the points in a coordinate system. Instatly we feel that a quadratic equation would fit these points better. To find this equation we use mathematica Fit function and get the result $0.28612-0.000305635 x+0.0113034x^2$. We can motivate that this approximation fits better than the linear .with the least squares method. We see that the least squares sum for a quadradic equation is less than for a linear. 
+We start by plotting the points in a coordinate system. Instantly we feel that a quadratic equation would fit these points better. To find this equation we use mathematica Fit function and get the result $0.28612-0.000305635 x+0.0113034x^2$. We can motivate that this approximation fits better than the linear .with the least squares method. We see that the least squares sum for a quadradic equation is less than for a linear. 
 ![](up4plot1.png)
 
 As the image shows, a quadratic fit is much better than a linear fit.
@@ -140,7 +140,6 @@ $$
 $$
 ![](up5graph2.png)
 ### b)
-Looking at the points we think that a function with degree 4 would be enought to fit all points exactly. This is because the "graph" changes direction 4 times. 
 The result looks like this. 
 
 ![](up5graph1.png)
@@ -154,17 +153,17 @@ Since spline interpolation can create diffrent functions between data points, th
 Two situations: Many accurate data points, few low quality data points.
 
 
-We first consider the situation with many accurate data points. If we use exact curve fitting we will get a very advanced function of a really high order. If we use least squares method we will get an approximation which would deviate more but more accurately describe data points that are outside the table. If the data quality is high and the use of the data is of great importance it seems reasonable to prioritize accuracy (splining) more than approximation (least squares). However is of low quality, an approximation seems more justified as long as there is some consistency within the data.
+We first consider the situation with many accurate data points. If we use exact curve fitting we will get a very advanced function of a really high order. If we use least squares method we will get an approximation which would deviate more but more accurately describe data points that are outside the table. If the data quality is high and the use of the data is of great importance it seems reasonable to prioritize accuracy (splining) more than approximation (least squares). However, if the data points are of low quality, an approximation seems more justified as long as there is some consistency within the data.
 
 If we have fewer data points it is not as obvious which is better. Let's consider the situation with three data points. If the points are in a triangle a linear approximaton would have a large deviation and tell very little about any possible pattern. Here, exact curve fitting could tell more about missing data. 
 ## 6
 ### a)
-The level of surprised is going to start from "not surprised at all" to an extreme level of surprise. The function should reasonably return $0$ in the event of "not surprised" level from an event that is 100% chance of happening. Example: $P[\text{getting heads or tails when flipping a coin}]$. However we believe that it doesn't exist a maximum level of surprise with the pholosphy "one could always be more surprised". 
+The level of surprise is going to start from "not surprised at all" to an extreme level of surprise. The function should reasonably return $0$ in the event of "not surprised" level from an event that is 100% chance of happening. Example: $P[\text{getting heads or tails when flipping a coin}]$. However we believe that it doesn't exist a maximum level of surprise with the pholosphy "one could always be more surprised". 
 
-The function for surprise should return a high value for a low input, something that is unlikely should lead to a bigger surprise. We first believed that the relation should be linear, that only the unlikelyness determines the surprise in a linear relation. However there are a lot of factors making us belive that the function would not be linear. Given the example that something unlikely happens to you and that we would expect a big surprise, that dosent say that this unliekly event havent happened to you many times before and therefor the surprise might not be as high as one might think.
+The function for surprise should return a high value for a low input, something that is unlikely should lead to a bigger surprise. We first believed that the relation should be linear, that only the unlikelyness determines the surprise in a linear relation. However there are a lot of factors making us belive that the function should not be linear. Given the example that something unlikely happens to you and that we would expect a big surprise, that dosent say that this unlikely event haven't happened to you many times before. Therefor the surprise might not be as high as one might think.
 
 ### b)
-Considering the past example that there are a lot of factors that come in to play, we dont belive that the surprise level should be the sum of two unrelated events and the equation is more complex. We believe that two unrelated events would increse the level of surprise exponentially. Since the possibility of them happening simuntainusely also gives a surprise factor. 
+Considering the past example that there are a lot of factors that come in play, we don't belive that the surprise level should be the sum of two unrelated events, the equation is more complex. We believe that two unrelated events would increse the level of surprise exponentially. Since the possibility of them happening simuntainusely also gives a surprise factor. 
 
 The model describing this would contain a factor for events happening simentainusely, a factor for how many times the individual event has happen to the person before and that the lower probaibility for an event would return a higher surprise. 
 $$
