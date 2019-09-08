@@ -1,4 +1,16 @@
 # Problem Module lv1
+## General info
+* FIRE group number 75
+* module number 1
+* By
+  - Oskar Wallgren, 960107-2292, IT, oskarwallgren@icloud.com
+  - Hugo Cliffordson, 970919-5799, IT, cliffords.contact@gmail.com
+
+* "We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.
+* the number of hours spent for each one of you
+  - We haven't tracked time but we have only worked simultaneously and approximately 10h this week
+* the number of hours your group has been present in supervision for this module
+  - 4h
 ## 1. Formulas Problem
 - How do we know it's reasonable? 
 - How well can it be expected to fit with reality? (exact or aprox)
