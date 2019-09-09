@@ -8,16 +8,16 @@
 
 * "We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.
 * Number of hours spent for each one of you
-  - We haven't tracked time but we have only worked simultaneously and approximately 10h this week
+  - We haven't tracked time but we have only worked simultaneously and approximately Xh this week
 * Number of hours spent in supervision for this module
-  - 4h
+  - Xh
 
 ## 1. Chocolate Factory Problem
 ### Known parameters
-- Current production: 80'000 bars/year
-- Annual Revenue: 1.3 Mkr
-- Marginal loss last year: 40'000 kr
-- New machine cost: 450'000 kr
+- Current production: **80'000 bars/year**
+- Annual Revenue: **1.3 Mkr**
+- Marginal loss last year: **40'000 kr**
+- New machine cost: **450'000 kr**
     * Improvements: reduce production cost form 5 to 3 kr/bar
 #### City trend sales
 | year 	| quantity 	| unit price 	|
