@@ -27,12 +27,31 @@
 | 2016 	| 7400     	|    18 kr   	|
 
 ## 2. Emergency Care Problem
-### Data
+#### Distance in minutes between regions and potential sites / Cost for locating emergency care on respective site
 
-| Site #    | 1 | 2 | 3 | 4 | 5 | 6 |
-|---------- |---|---|---|---|---|---|
-| Region 1  | 15| 3 | 12| 5 | 17| 20|
-| Region 2  |12 |9  |13 |16 |3  |4  |
-| Region 3  |13 |16 |9  |4  |7  |11 |
-   
+| Site #    | 1 | 2 | 3 | 4 | 5 | 6 |       |       | Cost  |
+|---------- |---|---|---|---|---|---|------ |------ |------ |
+| Region 1  | 15| 3 | 12| 5 | 17| 20|   X   |Site 1 |710 000|
+| Region 2  |12 |9  |13 |16 |3  |4  |   X   |Site 2 |610 000|
+| Region 3  |13 |16 |9  |4  |7  |11 |   X   |Site 3 |650 000|
+| Region 4  |3  |22 |12 |5  |16 |18 |   X   |Site 4 |910 000|
+| Region 5  |4  |7  |6  |22 |5  |14 |   X   |Site 5 |720 000|
+| Region 6  |8  |10 |5  |16 |13 |5  |   X   |Site 6 |570 000|
+| Region 7  |13 |10 |5  |6  |13 |21 |   X   |       |       |
 
+### a) Model problem mathematically
+
+## 3. Communications Network Problem
+![](up3graph1.jpeg)
+### a)
+
+### b)
+
+### c)
+
+## 4. Shortest Path as LP Problem
+
+## 5. Bridge Problem
+### a) What will be the travel time during rush hours?
+
+### b) What will be the new travel time between the large cities?
