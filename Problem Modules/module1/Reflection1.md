@@ -2,28 +2,27 @@
 ## I. WEEKLY MEETING AND FOLLOW-UP LECTURE
 
 ### a) Did you have your compulsory weekly meeting with a supervisor?
-
+Yes, we attended a supervision twice during the week and discussed our methods for approaching the solution.
 
 ### b) Did both of you attend the compulsory follow-up lecture? If you already talked to us about this, please explain.
+Yes
 
 ### c) If you were asked to talk to a supervisor about the main submission, who did you talk to?
+We were not asked to talk to a supervisor
 
 ## II. WHAT DID YOU EXPERIENCE AND LEARN?
+From the first problem we were introduced to a new way of approaching well known formulas and think about them in a different way. We learned to prove and justify the equations and formulate arguments based on proof and logic to back these up. We learned to think twice about what it actually means if something is exact or if it is an approximation. 
 
-Reflect on your experiences from working with the module and try to make the most out of them. If you reflect around individual problems (which is good), try to also draw general conclusions that may be helpful for you going forward (in this course and/or long-term). You are now encouraged to discuss the module with other groups!
+For problem two we used mathematica to plot points in order to find a correlation between data points. This problem taught us to use mathematica functions combined with past experience in plotting curves and use a system of equations to find the curve that fit the points perfectly. 
 
-Note that time spent in the reflection is time well spent, as it will help you to maximize the learning from the effort you already made when working with the problems.
+In the next problem we learned how powerful dimensional analysis can be and that it's mostly easy to use. We also learned what is meant by a period in a pendulum. 
 
-As the answer, give some well motivated points summarizing your reflections.
+The Bicycle Breaking problem was a relatively easy problem with focus on finding correlation between data points that don't necessarely fit a simple curve. We noted that there are several ways to find a "solution" to the problem. But just because one finds a solution, doesn't mean it's the best one. 
 
-## III. (HOW WELL DID YOU SOLVE THE PROBLEMS?)
+The surprise problem was mostly time spent discussing how to interpret a personal reaction mathematically. We learned from the follow up lecture that this is a question with several "right" asnwers as we ended up with a different one than from the lucture. What we shuold have done here though is to start by setting up a graph before trying to discuss the requirements of a function.
 
-Give a single assessment for the whole module and motivate with a sentence or two. This is for your own practice.
+As this was the first module, most time was spent interpreting both the question and coming up with a method that is within boundaries for the task. It's was easy to fall back into old math-habits but we eventually found a way to approach the problems in an effective way.
 
-Use the scale "insufficient/sufficient/good/very good", or a combination such as "between good and very good" or "good or very good". Use the criteria I have suggested as a guideline, or motivate your own.
+## III. HOW WELL DID YOU SOLVE THE PROBLEMS?
 
-(We as teachers will then set the grade for this module. We think it is better if you are able to make a fair assessment rather than an inflated one.)
-
-(SELF-CHECK) Do the self-check also for the reflection! (a self-check is always good practice)
-
-To submit the reflection, please append it to the end of your main submission and submit! Update the total hours spent to also include the reflection.
+We believe that we solved the problems good. We always read the instructions thoroughly and discussed before trying to actually solve it. Many times we tried one thing and on the way found a better way of doing it. We solved all the questions to the best of our ability and made sure to answer all the parts of the problem. We 
