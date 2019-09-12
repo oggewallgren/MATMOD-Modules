@@ -102,9 +102,17 @@ $$
 $$
 This tells us that if we want to cover all regions at a minimal cost we should build site $2$, $4$ and $6$ to a total cost of $2'090'000$.
 ### e) Could we handle it differently?
+Another way to think aabout this problem is to instead of optimizing the cost, optimizing travel minutes. Let's reformulate it like we can build a maximum of two sites. How do we minimize the travel minutes from each Region? To make this problem even more complex we could try to do this in combination. Optimize both travel time and cost.
 ## 3. Communications Network Problem
 ![](up3graph1.jpeg)
 ### a)
+Let's start by setting up variables we need. The task is to route as much communication to $F$ as possible. We want to know which routes we need to do this. Therefore we need variables for each link between location. This is reasonably a binary variable $0$(unused) or $1$(used).
+$$
+AB, AC, BD, BE, CD, CE, DF, EF
+$$
+Each of these owns a constant representing each connection's capacity.
+
+Next up we want to find an objective function
 
 ### b)
 
