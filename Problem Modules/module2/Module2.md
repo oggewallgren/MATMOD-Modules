@@ -76,7 +76,32 @@ Our conclution is that we recommend investing in the machine and lowering the un
 | Region 7  |13 |10 |5  |6  |13 |21 |   X   |       |       |
 
 ### a) Model problem mathematically
+First we set up variables. What we need for this problem is to cover all regions. We set up each site as a variable: $x_1, x_2, x_3...x_6$. Each site variable is going to be binary. Meaning that it will either be a $1$ or a $0$, depending on if it is to be built or not. We also need the constant for the cost of each site.
 
+To calculate the objective function we need to formulate the problem as to what the minimum cost of building sites to cover all regions. This gives us the objective function 
+$$
+OF = s_1x_1+s_2x_2+s_3x_3+s_4x_4+s_5x_5+s_6x_6
+$$
+Since $x_i$ is a binary value, some of there parameters are going to equal zero.
+For the objective function we need constraints. The constraints are going to be that *all regions need to be covered by at least one site*: 
+$$
+x_2+x_4 \ge 1, x_5+x_6 \ge 1, x_4+x_5 \ge 1, x_1+x_4 \ge 1, x_1+x_2+x_3+x_5 \ge 1, x_1+x_3+x_6 \ge 1, x_3+x_4 \ge 1
+$$
+And that a site is either built or not: $0 \le x_i \le 1$
+ 
+### c) Use NMinimize[]
+We take the variables and our objective function, with its constraints and input it into Mathematica. The result we get is this:
+$$
+1.752*10^6, x_1=0.2, x_2=0.2, x_3=0.2, x_4=0.8, x_5=0.4, x_6=0.6.
+$$
+Right away we see that this is not the answer we want. 
+### d) Force Integers
+When we change our variable to be only $1$ or $0$ we get it to be binary as we wanted from the start. Now we get the result:
+$$
+2.09*10^6, x_1=0, x_2=1, x_3=0, x_4=1, x_5=0, x_6=1
+$$
+This tells us that if we want to cover all regions at a minimal cost we should build site $2$, $4$ and $6$ to a total cost of $2'090'000$.
+### e) Could we handle it differently?
 ## 3. Communications Network Problem
 ![](up3graph1.jpeg)
 ### a)
@@ -84,6 +109,8 @@ Our conclution is that we recommend investing in the machine and lowering the un
 ### b)
 
 ### c)
+
+
 
 ## 4. Shortest Path as LP Problem
 
