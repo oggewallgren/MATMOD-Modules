@@ -110,9 +110,9 @@ Let's start by setting up variables we need. The task is to route as much commun
 $$
 AB, AC, BD, BE, CD, CE, DF, EF
 $$
-Next up we want to find an objective function
+Next up we want to find an objective function, max capacity $T$.
 $$
-T = FE+FD
+T = EF+DF
 $$
 Representing the maximum capacity into $F$. Constraint we need for this is first each connections capacity.
 $$
@@ -139,14 +139,78 @@ AB=16,\text{ } AC=0,\text{ }BD=24,\text{ }BE=-8,\text{ }CD=-8,\text{ }CE=8,\text
 $$
 
 ### b)
+If $BD$ breaks, we will have to change our constraint. More specifically we remove the variable $BD$, remove the $-32 \le BD \le 32$ constraint and redo the relation constraints. 
+$$
+AB - BE = 0,
+{}AC - (CE + CD) = 0,
+{}CD-DF = 0,
+{}CE-(BE+EF) = 0,
+$$
+This results in
+$$
+T=24,\text{ }
+AC=-8,\text{ }AC=16,\text{ }BE=-8,\text{ }CD=8,\text{ }CD=8,\text{ }DF=8,\text{ }EF=16
+$$
+The maximum capacity when removing BD is halved from 48 to 24. 
+
 
 ### c)
+We modeled this problem in two different ways. First we used the same function and constraints as before, except for an added constraint where $DF+EF=35$. This gave us:
+$$
+35.,AB=16,AC=13.,BD=19.,BE=-3.,CD=0.,CE=13.,DF=19.,EF=16.
+$$
+The connection CD is not needed to reach a capacity of 35Mbit/s.
+Next we modeled it trying to find the minimum connections needed to get *at least* 35Mbit/s. With new variables:
+$x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8$ representing each connection as binary variables 0 or 1.
+To get the capacity we added variables $c_1,c_2...c_8$ representing each connections capacity. With these we want to minimize with the objective funtion $\sum^8_{i=1}x_i$.
+Then we used the constraints to make $x_{1-8}$ binary, $c_{1-8}$ representing capacity and $c_7x_7+c_8x_8\ge35$. This gave us the result:
+$$
+T=7.,x1->1.,x2->0,x3->1.,x4->1.,x5->1.,x6->1.,x7->1.,x8->1.,c1->3.,c2->-48.,c3->11.,c4->-8.,c5->-8.,c6->8.,c7->19.,c8->16.
+$$
+Meaning that we don't need connection $x_2$ ($AC$) to get at least 35Mbit/s.
 
+These two answers tells us that it is possible to remove one node entirely. The first model told us that we did not need CD. And our attempt to optimize minimum nodes used with the second model told us that we dont need to use AC. If our models are correct it also tells us that it's only possible to remove one node and still be able to get a capacity of 35Mbit/s.
 
 
 ## 4. Shortest Path as LP Problem
 
 ## 5. Bridge Problem
 ### a) What will be the travel time during rush hours?
-
+If 20 cars/min travel from each city and each car have two equal ways to choose from ($AC, BD$). If we assume that every driver makes a decision before taking any road, based on which one is "less crowded". Reasonably we should get the same amount of cars on each road. Because as one car enters one road, the other choice is going to be faster. This means that we will get $\frac{20}{2}$ cars/min intensity and result in a travel time $30+10+\frac{20}{2}=50$ minutes.
 ### b) What will be the new travel time between the large cities?
+To optimize the travel time when building a bridge we need to consider how many cars take each road and calculate the avarage time. To do this we define variables $x_{1-4}$ representing number of cars on each road. Travel time is then going to be
+We can set up an equation for each possible road to choose.
+![](up5eq1.jpeg)
+To this function we add the constraints:
+$$
+0 \le x_1 \le 20,
+\text{ }0 \le x_2 \le 20,
+\text{ }0 \le x_3 \le 20,
+\text{ }0 \le x_4 \le 20,
+$$
+This gets us the objective function
+$$
+\frac{x_1*(10+x_1+x_2+30) + x_2*(10+x_1+x_2+1+10+x_2+x4)+x_3*61+x_4*(30+10+x_2+x_4)}{20})
+$$
+with the constraints
+$$
+\sum^4_{i=1}x_i = 20 
+$$
+$$
+0\le x_1\le 20, \\ 
+0\le x_2\le 20,\\
+0\le x_3\le 20,\\
+0\le x_4\le 20,\\
+x_1+x_2+x_3+x_4=20,\\
+1+10+x_2+x_4=30,\\
+10+x_1+x2+1=30,\\
+$$
+
+This gives us the result:
+$$
+\text{Travel time} = 59
+$$
+$$
+x_1 = 1, x_2=18, x_3=0, x_4=1
+$$
+If we use these values for $x_i$ in the equations left of the figure. We can see that $AC,AD,BD$ are in a stable state or in an equilibrium.
