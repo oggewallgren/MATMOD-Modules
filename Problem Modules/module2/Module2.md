@@ -8,9 +8,9 @@
 
 * "We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.
 * Number of hours spent for each one of you
-  - We haven't tracked time but we have only worked simultaneously and approximately Xh this week
+  - Both 10
 * Number of hours spent in supervision for this module
-  - Xh
+  - 4h
 
 ## 1. Chocolate Factory Problem
 ### Known parameters
@@ -46,9 +46,12 @@ $2014: 10300*5=51500$
 
 First figure illustrates the correlation between quantity and unit price. Here we can see that sold quantity increases as we lower prices.
 ![](up1graphQuantPrice.png)
+
 The next figure illustrates the correlation between unit price and revenue (unit price $*$ quantity sold). Here we can see that the most revenue measured is when we have a unit price of $15kr$. 
+
 ![](up1graphRevPrice.png)
-Since we only have these three data points from a sample in their hometown, we dont think that this is enough to create a justified model to caluclate the optimal unit price to maximize revenue. However, we know that the maximum revenue they had, in their home town, was at $15$ SEK/unit. We believe that this is sufficient information to conclude that the unit price should be $15$ SEK in order to maxmize the revenue based on the data we have.
+
+Since we only have these three data points from a sample from their hometown, we dont think that it is enough to create a justified model to caluclate the optimal unit price to maximize revenue. However, we know that the maximum revenue they had, in their home town, was at $15$ SEK/unit. We believe that this is sufficient information to conclude that the unit price should be $15$ SEK in order to maxmize the revenue based on the data we have.
 
 From the numbers given in the question we know the total revenue to be $1.3Mkr$, the marginal loss to be $40 000$kr. By this we draw the conclusion that total costs equals to $1'340'000$kr. We know that out of this, production cost equals $5*80000=400'000$. This means that we can calculate fixed costs to be $940'000$kr.
 
@@ -56,11 +59,6 @@ To calculate whether it is worth investing in a new machine or not, we have to c
 By this calculation, them machine could be pay itself after $\frac{450'000}{120'000}=3.75$ years.
 
 Our conclution is that we recommend investing in the machine and lowering the unit price to $15$kr/bar.
-
-
-
-
-
 
 ## 2. Emergency Care Problem
 #### Distance in minutes between regions and potential sites / Cost for locating emergency care on respective site
@@ -85,16 +83,16 @@ $$
 Since $x_i$ is a binary value, some of there parameters are going to equal zero.
 For the objective function we need constraints. The constraints are going to be that *all regions need to be covered by at least one site*: 
 $$
-x_2+x_4 \ge 1, x_5+x_6 \ge 1, x_4+x_5 \ge 1, x_1+x_4 \ge 1, x_1+x_2+x_3+x_5 \ge 1, x_1+x_3+x_6 \ge 1, x_3+x_4 \ge 1
+x_2+x_4 \ge 1,\\ x_5+x_6 \ge 1,\\ x_4+x_5 \ge 1,\\ x_1+x_4 \ge 1,\\ x_1+x_2+x_3+x_5 \ge 1,\\ x_1+x_3+x_6 \ge 1,\\ x_3+x_4 \ge 1
 $$
 And that a site is either built or not: $0 \le x_i \le 1$
  
-### c) Use NMinimize[]
+### c) Use $NMinimize[]$
 We take the variables and our objective function, with its constraints and input it into Mathematica. The result we get is this:
 $$
 1.752*10^6, x_1=0.2, x_2=0.2, x_3=0.2, x_4=0.8, x_5=0.4, x_6=0.6.
 $$
-Right away we see that this is not the answer we want. 
+Right away we see that this is not the answer we want as we want whole numbers. 
 ### d) Force Integers
 When we change our variable to be only $1$ or $0$ we get it to be binary as we wanted from the start. Now we get the result:
 $$
@@ -102,7 +100,7 @@ $$
 $$
 This tells us that if we want to cover all regions at a minimal cost we should build site $2$, $4$ and $6$ to a total cost of $2'090'000$.
 ### e) Could we handle it differently?
-Another way to think aabout this problem is to instead of optimizing the cost, optimizing travel minutes. Let's reformulate it like we can build a maximum of two sites. How do we minimize the travel minutes from each Region? To make this problem even more complex we could try to do this in combination. Optimize both travel time and cost.
+Another way to think about this problem is to instead of optimizing the cost, optimizing travel minutes. Let's reformulate it like we can build a maximum of two sites. How do we minimize the travel minutes from each Region? To make this problem even more complex we could try to do this in combination. Optimize both travel time and cost.
 ## 3. Communications Network Problem
 ![](up3graph1.jpeg)
 ### a)
@@ -157,9 +155,9 @@ The maximum capacity when removing BD is halved from 48 to 24.
 ### c)
 We modeled this problem in two different ways. First we used the same function and constraints as before, except for an added constraint where $DF+EF=35$. This gave us:
 $$
-35.,AB=16,AC=13.,BD=19.,BE=-3.,CD=0.,CE=13.,DF=19.,EF=16.
+35,AB=16,AC=13,BD=19.,BE=-3.,CD=0,CE=13,DF=19,EF=16.
 $$
-The connection CD is not needed to reach a capacity of 35Mbit/s.
+The connection CD is not required to reach a capacity of 35Mbit/s.
 Next we modeled it trying to find the minimum connections needed to get *at least* 35Mbit/s. With new variables:
 $x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8$ representing each connection as binary variables 0 or 1.
 To get the capacity we added variables $c_1,c_2...c_8$ representing each connections capacity. With these we want to minimize with the objective funtion $\sum^8_{i=1}x_i$.
