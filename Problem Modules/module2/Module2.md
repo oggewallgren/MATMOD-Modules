@@ -106,13 +106,37 @@ Another way to think aabout this problem is to instead of optimizing the cost, o
 ## 3. Communications Network Problem
 ![](up3graph1.jpeg)
 ### a)
-Let's start by setting up variables we need. The task is to route as much communication to $F$ as possible. We want to know which routes we need to do this. Therefore we need variables for each link between location. This is reasonably a binary variable $0$(unused) or $1$(used).
+Let's start by setting up variables we need. The task is to route as much communication to $F$ as possible. We want to know which routes we need to do this. Therefore we need variables for each link between the nodes. Each variable is going to represent the capacity. 
 $$
 AB, AC, BD, BE, CD, CE, DF, EF
 $$
-Each of these owns a constant representing each connection's capacity.
-
 Next up we want to find an objective function
+$$
+T = FE+FD
+$$
+Representing the maximum capacity into $F$. Constraint we need for this is first each connections capacity.
+$$
+-16 \le AB \le 16,
+{} -48 \le AC \le 48,
+{} -32 \le BD \le 32,
+{}-8 \le BE \le 8,
+{}-8 \le CD \le 8,
+{}-32 \le CE \le 32,
+{}-64 \le DF \le 64,
+{}-16 \le EF \le 16
+$$
+Next that each node has equal amount coming in as going out.
+$$
+AB-(BE+BD)=0,
+{}AC-(CE+CD) = 0,
+{}BD-(CD+DF) = 0,
+{}CE-(BE+EF) = 0,
+$$
+We get this output:
+$$
+T=48,\text{ }
+AB=16,\text{ } AC=0,\text{ }BD=24,\text{ }BE=-8,\text{ }CD=-8,\text{ }CE=8,\text{ }DF=32,\text{ }EF=16
+$$
 
 ### b)
 
