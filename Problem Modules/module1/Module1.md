@@ -4,11 +4,11 @@
 * module number 1
 * By
   - Oskar Wallgren, 960107-2292, IT, oskarwallgren@icloud.com
-  - Hugo Cliffordson, 970919-5799, IT, cliffords.contact@gmail.com
+  - Hugo Cliffordson, 970917-5799, IT, cliffords.contact@gmail.com
 
 * "We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.
 * the number of hours spent for each one of you
-  - We haven't tracked time but we have only worked simultaneously and approximately 10h this week
+  - 14h
 * the number of hours your group has been present in supervision for this module
   - 4h
 ## 1. Formulas Problem
