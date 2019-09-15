@@ -171,6 +171,29 @@ These two answers tells us that it is possible to remove one node entirely. The 
 
 
 ## 4. Shortest Path as LP Problem
+The shortest path can be said to be linear because it can follow the typical expression of a linear programing optimization.
+We can:
+- minimize an objective function.
+- subject to some constrataints 
+- with the variables to be determined larger $>= 0$
+  
+If we have a graph with $n$ nodes. The shortest path will be the minimum "length/weight" of the edges/arcs needed to get from the Start node to the end node. Assuming one unit of flow enters at start end leaves at the end node.
+  
+We can formulate the problem with a linear programing model. We start by defining the variables.
+
+#### Variables
+$
+{X{({}_{from},_{to}})}
+$
+
+This variable describes an edge with start in the node *from* and end in the node *to* as a binary value of being either $0$ or $1$. The $0$ meaning that we do not need it in our shortests path and the $1$ that we need the edge in the shortest path. 
+
+$
+{E{({}_{from},_{to}})}
+$
+
+This variable describes the value (weight) of the edge that we need to add to our shortest path.
+
 
 ## 5. Bridge Problem
 ### a) What will be the travel time during rush hours?
