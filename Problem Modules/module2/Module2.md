@@ -8,7 +8,7 @@
 
 * "We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.
 * Number of hours spent for each one of you
-  - Both 10
+  - Both 12
 * Number of hours spent in supervision for this module
   - 4h
 
@@ -86,13 +86,15 @@ $$
 x_2+x_4 \ge 1,\\ x_5+x_6 \ge 1,\\ x_4+x_5 \ge 1,\\ x_1+x_4 \ge 1,\\ x_1+x_2+x_3+x_5 \ge 1,\\ x_1+x_3+x_6 \ge 1,\\ x_3+x_4 \ge 1
 $$
 And that a site is either built or not: $0 \le x_i \le 1$
+### b)
+The objective function and the constraints we found are linear.
  
 ### c) Use $NMinimize[]$
 We take the variables and our objective function, with its constraints and input it into Mathematica. The result we get is this:
 $$
 1.752*10^6, x_1=0.2, x_2=0.2, x_3=0.2, x_4=0.8, x_5=0.4, x_6=0.6.
 $$
-Right away we see that this is not the answer we want as we want whole numbers. 
+Right away we see that this is not the answer we want as we want whole numbers. If we apply this to the real world we would say that the best optimization for this problem is to build one fifth of a site at some sites and parts of sites in other places. As this feels unrealistic we continue trying to solve it with integers.
 ### d) Force Integers
 When we change our variable to be only $1$ or $0$ we get it to be binary as we wanted from the start. Now we get the result:
 $$
@@ -135,6 +137,7 @@ $$
 T=48,\text{ }
 AB=16,\text{ } AC=0,\text{ }BD=24,\text{ }BE=-8,\text{ }CD=-8,\text{ }CE=8,\text{ }DF=32,\text{ }EF=16
 $$
+The maximum capacity into $F$ is therefore 48Mbit/s
 
 ### b)
 If $BD$ breaks, we will have to change our constraint. More specifically we remove the variable $BD$, remove the $-32 \le BD \le 32$ constraint and redo the relation constraints. 
@@ -160,33 +163,33 @@ $$
 The connection CD is not required to reach a capacity of 35Mbit/s.
 Next we modeled it trying to find the minimum connections needed to get *at least* 35Mbit/s. With new variables:
 $x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8$ representing each connection as binary variables 0 or 1.
-To get the capacity we added variables $c_1,c_2...c_8$ representing each connections capacity. With these we want to minimize with the objective funtion $\sum^8_{i=1}x_i$.
+To get the capacity we added variables $c_1,c_2...c_8$ representing each connections capacity. With these we want to minimize with the objective function $\sum^8_{i=1}x_i$.
 Then we used the constraints to make $x_{1-8}$ binary, $c_{1-8}$ representing capacity and $c_7x_7+c_8x_8\ge35$. This gave us the result:
 $$
 T=7.,x1->1.,x2->0,x3->1.,x4->1.,x5->1.,x6->1.,x7->1.,x8->1.,c1->3.,c2->-48.,c3->11.,c4->-8.,c5->-8.,c6->8.,c7->19.,c8->16.
 $$
 Meaning that we don't need connection $x_2$ ($AC$) to get at least 35Mbit/s.
 
-These two answers tells us that it is possible to remove one node entirely. The first model told us that we did not need CD. And our attempt to optimize minimum nodes used with the second model told us that we dont need to use AC. If our models are correct it also tells us that it's only possible to remove one node and still be able to get a capacity of 35Mbit/s.
+These two answers tells us that it is possible to remove one node entirely. The first model told us that we did not need CD. And our attempt to optimize minimum nodes used with the second model told us that we don't need to use AC. If our models are correct it also tells us that it's only possible to remove one node and still be able to get a capacity of 35Mbit/s.
 
 
 ## 4. Shortest Path as LP Problem
 The shortest path can be said to be linear because it can follow the typical expression of a linear programing optimization.
 We can:
 - minimize an objective function.
-- subject to some constrataints 
-- with the variables to be determined larger $>= 0$
+- subject it to some constraints 
+- with the variables to be determined $\ge 0$
   
-If we have a graph with $n$ nodes. The shortest path will be the minimum "length/weight" of the edges/arcs needed to get from the Start node to the end node. Assuming one unit of flow enters at start end leaves at the end node.
+If we have a directed graph with $n$ nodes. The shortest path will be the minimum "length/weight" of the edges/arcs needed to get from the Start node to the end node. Assuming one unit of flow enters at start end leaves at the end node. If the graph is unweighted we cannot model it as a linear programming problem.
   
-We can formulate the problem with a linear programing model. We start by defining the variables.
+If were interested in finding the shortest path from one node to all other nodes, we could minimize the same objective function but subject it to a constraint that for a edge to be added to the path it cant be in a cycle. Meaning that the edge added cannot be added if by adding it we create a path to a node already visited. By this we will get all the minimum weight of all the edges needed to visit all the nodes except the edges that would result in visiting a node twice. Which would be the shortest path from a node to all other nodes.
 
 #### Variables
 $
 {X{({}_{from},_{to}})}
 $
 
-This variable describes an edge with start in the node *from* and end in the node *to* as a binary value of being either $0$ or $1$. The $0$ meaning that we do not need it in our shortests path and the $1$ that we need the edge in the shortest path. 
+This variable describes an edge with start in the node *from* and end in the node *to* as a binary value of being either $0$ or $1$. The $0$ meaning that we do not need it in our shortest path and the $1$ that we need the edge in the shortest path. 
 
 $
 {E{({}_{from},_{to}})}
@@ -194,13 +197,29 @@ $
 
 This variable describes the value (weight) of the edge that we need to add to our shortest path.
 
+Our objective function is represented by
+$$
+min\sum^n_{i=1}X_{(from,to)}E_{(from,to)}
+$$
+It is reasonable that this is our objective function if you consider that X is one in all iterations of the sum, then we will get the sum of all the edges in the graph. If then only the edges in the shortest path has the $X$ value of $1$, then we will get the shortest path. To do this we add the following constraints.
+$$
+X \ge 0 \\ 
+$$
+The start node is going to have zero in edges and exactly one out edge, while the end node is going to have exactly one in edge and zero out. We also need a constraint saying that the number of in edges has to be equal to to number of out edges for all other nodes in the shortest path.
+
+If we were interested in the shortest path from one node to all other nodes we interpret it as a problem of a minimum spanning tree. First we try to set up the different parts needed for a linear programming problem
+- minimize an objective function.
+- subject it to some constraints 
+- with the variables to be determined $\ge 0$
+
+Criteria we need to consider is that all nodes need to be marked "visited" with no cycles. 
+
 
 ## 5. Bridge Problem
 ### a) What will be the travel time during rush hours?
-If 20 cars/min travel from each city and each car have two equal ways to choose from ($AC, BD$). If we assume that every driver makes a decision before taking any road, based on which one is "less crowded". Reasonably we should get the same amount of cars on each road. Because as one car enters one road, the other choice is going to be faster. This means that we will get $\frac{20}{2}$ cars/min intensity and result in a travel time $30+10+\frac{20}{2}=50$ minutes.
+If 20 cars/min travel from each city and each car have two equal ways to choose from ($AC, BD$). If we assume that every driver makes a decision before taking any road, based on which one is "faster". Reasonably we should get the same number of cars on each road. Because as one car enters one road, the other choice is going to be faster. This means that we will get $\frac{20}{2}$ cars/min intensity and result in a travel time $30+10+\frac{20}{2}=50$ minutes.
 ### b) What will be the new travel time between the large cities?
-To optimize the travel time when building a bridge we need to consider how many cars take each road and calculate the avarage time. To do this we define variables $x_{1-4}$ representing number of cars on each road. Travel time is then going to be
-We can set up an equation for each possible road to choose.
+To optimize the travel time when building a bridge we need to consider how many cars take each road and calculate the average time. To do this we define variables $x_{1-4}$ representing number of cars on each road and numbers of ways to travel between the cities. We can set up an equation for each possible road to choose.
 ![](up5eq1.jpeg)
 To this function we add the constraints:
 $$
