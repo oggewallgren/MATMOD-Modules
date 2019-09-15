@@ -20,7 +20,7 @@
 
   - Pytharogas theorem gets me thinking about distance between objects
   - If either $a$ or $b$ is $0$, we end up with $a^2 = c^2$ (the same line are equal lengths) which we know to be true. 
-  - If we sum the quadrat of both cathetus $3^2+4^2=5^2$
+  - If we sum the quadrat of both catheters $3^2+4^2=5^2$
 
 * Stock index = $2045 +0.0034t$
   - since this is made up index we don't bother about the $2045$ or $0.0034$. What we know is that it is an approximation because we cannot predict the future. There's one unrealistic part of the equation. A stock index cannot be linear since a percental increase every year results in a exponetial curve.
@@ -78,7 +78,7 @@ Plotting the points in a graph we get:
 - We are confident that model could calculate the distance given other values of T that are not in the table. There would still be a deviation in accuracy espically when the t increases.  
 
 
-## 3
+## 3 Pendulum
 We're thinking that the period should only be affected by length of the rope $L$ and the acceleration which is gravity in this case $g$. It is not affected by drop angle because a larger drop angle would give it more speed but more distance to cover, in comparison with a small drop angle which has a low speed but also less distance to cover. Reasonably then time $T$ is an expression dependent on $L$ and $g$. The mass is also a parameter that doesn't affect the period as a large mass gives it more speed on the way down but then also slows it down more on the way up. This can also be backed up by this equation.
 $$
 \text{We know that } F=mg \text{ and that } F=\frac{mL}{T^2}.
@@ -116,7 +116,7 @@ For the first equation we get $C=8.15$ and the second we get $C=8.11$. This give
 $$
 T=8*\sqrt{\frac{L}{g}}
 $$
-## 4
+## 4 Bicycle Breaking Problem
 ### a)
 ![](up4points1.jpeg)
 With a simple equation system we get an equation that fits the points. But when adding $(4,5)$ we see that it doesn't fit the curve of the function anymore. We would have to redo all the work and create another equation. This would have to be done for all new points pivoting from the function curve. 
@@ -145,7 +145,7 @@ We start by plotting the points in a coordinate system. Instantly we feel that a
 As the image shows, a quadratic fit is much better than a linear fit.
 
 Since the data is somewhat inconsistent between two points, it's hard to find a function that fits all points exactly. However, our model does a pretty good job. Because most points in the table are consistent with our model, we can assume that it also is reliable for new points with small deviations. Conclusion is that there is a correlation between speed and breaking distance on a bicycle and that it is exponential.
-## 5
+## 5 Splines
 ### a)
 Because we have seven data points we will reasonably need 7 unknown variables like $y=ax^6+bx^5+cx^4+dx^3+ex^2+fx+g$ and therefore an equation with degree 6. When we the try this in mathematica with the function Fit we get the equation 
 $$
@@ -157,7 +157,7 @@ The result looks like this.
 
 ![](up5graph1.png)
 
-The idea of spline interpolation is to describe the data sets with concattenated functions. If some points in the dataset could be described by a simple low order function but some points after these points cannot, the idea is to create to spererate functions that bridges the gap of inconsistensy that is between the two data sets, creating an smooth curve that can describe all these datapoints. 
+The idea of spline interpolation is to describe the data points with concattenated functions. If some points in the dataset could be described by a simple low order function but some points after these points cannot, the idea is to create to spererate functions that bridges the gap of inconsistensy that is between the two data points, creating an smooth curve that can describe all these datapoints. 
 
 
 Since spline interpolation can create diffrent functions between data points, the functions used would be of a lower order than if we were to describe them with a single polynomial serie. The resulting curve will also be smoother than if a polynomial series of a highorder was used. It also seems it is better for evaluting values not in the table entries.
@@ -169,18 +169,45 @@ Two situations: Many accurate data points, few low quality data points.
 We first consider the situation with many accurate data points. If we use exact curve fitting we will get a very advanced function of a really high order. If we use least squares method we will get an approximation which would deviate more but more accurately describe data points that are outside the table. If the data quality is high and the use of the data is of great importance it seems reasonable to prioritize accuracy (splining) more than approximation (least squares). However, if the data points are of low quality, an approximation seems more justified as long as there is some consistency within the data.
 
 If we have fewer data points it is not as obvious which is better. Let's consider the situation with three data points. If the points are in a triangle a linear approximaton would have a large deviation and tell very little about any possible pattern. Here, exact curve fitting could tell more about missing data. 
-## 6
+## 6 Surprise
 ### a)
 The level of surprise is going to start from "not surprised at all" to an extreme level of surprise. The function should reasonably return $0$ in the event of "not surprised" level from an event that is 100% chance of happening. Example: $P[\text{getting heads or tails when flipping a coin}]$. However we believe that it doesn't exist a maximum level of surprise with the pholosphy "one could always be more surprised". 
 
 The function for surprise should return a high value for a low input, something that is unlikely should lead to a bigger surprise. We first believed that the relation should be linear, that only the unlikelyness determines the surprise in a linear relation. However there are a lot of factors making us belive that the function should not be linear. Given the example that something unlikely happens to you and that we would expect a big surprise, that dosent say that this unlikely event haven't happened to you many times before. Therefor the surprise might not be as high as one might think.
 
 ### b)
-Considering the past example that there are a lot of factors that come in play, we don't belive that the surprise level should be the sum of two unrelated events, the equation is more complex. We believe that two unrelated events would increse the level of surprise exponentially. Since the possibility of them happening simuntainusely also gives a surprise factor. 
+Considering the graph we these few examples for one and two events with probalility $50$%.
+![](up6graph7.jpeg)
+You can see in this figure that the points don't follow a linear model. We know as the figure says that $f(0)=\infty$, that $f(1)=0$ and that $f(P[A \cap B ])=f(P[A])+f(P[B])$. With these we try different points and plot them in a graph.
+When we connect the points we get something like:
+![](up6graph8.jpeg). 
+The only function we can find that fulfill all these criteria is $surprise(p)=-log(p)$. This makes sense as we know according to the logaritmic law $log(a * b)=log(a)+log(b)$. and that $log(1)=0$ and $log(p)_{p\rarr(-0)}=\infty$.
 
-The model describing this would contain a factor for events happening simentainusely, a factor for how many times the individual event has happen to the person before and that the lower probaibility for an event would return a higher surprise. 
-$$
-P[\text{surprise}] = \frac{1}{\prod^n_{i=0} {P[event]}*\text{number of times it has happened}}
-$$
+# Reflection module 1
+## I. WEEKLY MEETING AND FOLLOW-UP LECTURE
 
+### a) Did you have your compulsory weekly meeting with a supervisor?
+Yes, we attended a supervision twice during the week and discussed our methods for approaching the solution.
 
+### b) Did both of you attend the compulsory follow-up lecture? If you already talked to us about this, please explain.
+Yes we did attend the follow-up lecture. At this lecture we learnt that there is no "right" answer but rather good techniques to use to get a qualitative conclusion to a question. We also learnt how to reflect on the process of solving the problems.
+
+### c) If you were asked to talk to a supervisor about the main submission, who did you talk to?
+Due to changes in schedule and late feedback on the module we have not had time to talk to a supervisor about problem 1 and 6.
+
+## II. WHAT DID YOU EXPERIENCE AND LEARN?
+From the first problem we were introduced to a new way of approaching well known formulas and think about them in a different way. We learned to prove and justify the equations and formulate arguments based on proof and logic to back these up. We learned to think twice about what it actually means if something is exact or if it is an approximation. 
+
+For problem two we used mathematica to plot points in order to find a correlation between data points. This problem taught us to use mathematica functions combined with past experience in plotting curves and use a system of equations to find the curve that fit the points perfectly. 
+
+In the next problem we learned how powerful dimensional analysis can be and that it's mostly easy to use. We also learned what is meant by a period in a pendulum. 
+
+The Bicycle Breaking problem was a relatively easy problem with focus on finding correlation between data points that don't necessarely fit a simple curve. We noted that there are several ways to find a "solution" to the problem. But just because one finds a solution, doesn't mean it's the best one. 
+
+The surprise problem was mostly time spent discussing how to interpret a personal reaction mathematically. We learned from the follow up lecture that this is a question with several "right" asnwers as we ended up with a different one than from the lucture. What we shuold have done here though is to start by setting up a graph before trying to discuss the requirements of a function.
+
+As this was the first module, most time was spent interpreting both the question and coming up with a method that is within boundaries for the task. It's was easy to fall back into old math-habits but we eventually found a way to approach the problems in an effective way.
+
+## III. HOW WELL DID YOU SOLVE THE PROBLEMS?
+
+We believe that we solved the problems good. We always read the instructions thoroughly and discussed before trying to actually solve it. Many times we tried one thing and on the way found a better way of doing it. We solved all the questions to the best of our ability and made sure to answer all the parts of the problem.
