@@ -91,22 +91,34 @@ When we use this together with negating all the edge values and adding a *start*
 ### d)
 
 ## 3. Conference Problem
-Reasonably there are several ways to solve this problem, one way we feel confident will give us the correct answer is using *set packing*. The idea with set packing is to list the items that are not possible combine. 
+### Using shortest path
+Reasonably there are several ways to solve this problem, one way we feel confident will give us the correct answer is using *shortest path*.
 
-We start by listing the the lectures that are not possible to combine. When all lectures are listed we try to maximize the number of lectures we can attend.
+If we have all the lectures as vertices and edges with a value of $1$ representing that one lecture is attended. We can use shortest path to find the "longest path" and therefore the maximum number of lectures we can attend. To do this we have to model the data with edges that represent the possible lectures to attend after finishing another lecture. We also add a *start* and *end* node that will represent starting and end of the day. These will be the nodes we want to find the shortest path between.
 
 Let's show this with an example. 
 
 ![](Screenshot&#32;2019-09-17&#32;at&#32;14.33.08.png)
 
-We denote the lectures from left to right $A \rarr D$ and with subsets $A_{1-2}, B_{1-2},C_{1-5},D_{1-3}$. The sets we cannot combine are going to be:
-$$
-\{A_1,B_1,C_1,D_1\},
-\{A_1,C_2,D_2\},
-\{A_1,C_3\},
-\{A_2,B_2,C_3,D_2\},
-\{A_2,C_1,D_1\}
-$$
-We set all lectures to a value of $1$ and then maximize it. This will give us maximum number of lectures we can attend.
+If we model this with a graph where all edges have a value of $-1$ and where there's an edge between all possible ways to walk between lectures we get this graph. We get this (except for a few edges that we choose to exclude from the figure, for better readability):
+![](up3conference.jpeg)
 
-We can also solve this with shortest path if we model it as 
+The green starting node to the left represents a start and the red to the far right represent the end. If we take the shortest path between these and negates the result we are going to get the longest path and therefore the maximum number of lectures that is possible to attend. This can be justified by analizing the longest path, here this will be the path with the largest number of edges.
+
+### Using set packing
+In addition to shortest path, we believe that this problem can be solved using set packing. We model the problem according to the definition of set packing linked in the problem module. The objects our case will be the lectures. For better readability we only use the part after the coffee break.
+![](up3schedule2.png)
+
+We denote the lectures from left to right $A \rarr D$ and with subsets $A_{1-2}, B_{1-2},C_{1},D_{1-2}$. With the value for each object as $1$. Meaning "one attended lecture". Now we have to subject the object to some constraints, in order to maximize the value of objects chosen. In order to do this, we have to list all the subsets containing objects that are not possible to conbine. The subsets and lectures that are not possible to combine are going to be:
+$$
+\{A_1,B_1,C_1,D_1\},\\ \{A_1,D_2\}, \\ \{B_1,A_2,D_2\}, \\\{A_2,B_2,C_1,D_2\}, \\ \{B_2,D_2\}
+$$
+Let's say we want to attend $A_1$. If we look at the subsets we can see that the only object possible to combine with $A_1$ is $B_2$ and $A_2$. This will return the value $2$. Because we choose one of the two subsets. Meaning you have attended two lectures.
+
+Let's list all the possible combinations:
+$$
+\{A_1,A_2\},\{A_1,B_2\}, \{B_1\},\{C_1\},\{D_1,A_2\},\{D_1,B_2\},\{D_1,B_2\},\{D_1,D_2\}
+$$
+Here we can see that the largest subsets contains two objects. As all objects have a value of $1$, the set packing algoritm will return $2$.
+
+## 4. $\text{Subset}_{\text{sum}}$ and Partition Problem
