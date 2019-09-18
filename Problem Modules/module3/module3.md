@@ -89,6 +89,11 @@ The start node is going to have zero in edges and exactly one out edge, while th
 When we use this together with negating all the edge values and adding a *start* and *end* node as described in *b)*. Then we will calculate the longest path by a linear programming model. This tells us that we can use a linear programming solver to find the minimum time.
 
 ### d)
+We interpret not knowing the exact duration means we only have an approximation of the time. An approximation of the time gives us an interval. Let's say for example, we know a task approximately has a duration of 4 days, but it could take both three and five days to complete.
+
+We apply this to the task solving the "worst case" scenario. Meaning we use the highest duration of time in the interval. The downside of modeling the problem like this is that we won't get the minimal time to finish the project most of the time. But we know that we won't run into any trouble starting a task before a task it's dependent on is finished.
+
+A way to avoid this is to always use the lowest value in the interval. If we do this, we know that we will get the minimum time required every time we get it right. But the downside of this model is that we might start a task before a task it is dependent on is finished.
 
 ## 3. Conference Problem
 ### Using shortest path
@@ -121,4 +126,24 @@ $$
 $$
 Here we can see that the largest subsets contains two objects. As all objects have a value of $1$, the set packing algoritm will return $2$.
 
-## 4. $\text{Subset}_{\text{sum}}$ and Partition Problem
+## 4. Subset-sum and Partition Problem
+### a) Solve Partition with Subset-sum
+Let's say we have a set $A$ with $n$ integers $a_1, ...,a_n$. Assuming we can  find the sum of this set $\sum^n_{i=1}a_i$ we can use this to solve *partition* as true or false. We also assume that with partition we have to use all elements in the set. 
+
+We know this can only be possible if $\sum^n_{i=1}a_i$ is even, because partition of an odd sum will return false. Subset_sum has two parameters, a set and an integer $S$.
+$$
+\text{SubsetSum(set, S)}
+$$
+If we input the set $A$ and its sum divided by two $\frac{\sum^n_{i=1}a_i}{2}$ and use it as $S$. Subset_Sum will tell us if there is a subset of $A$ with the sum half of the entire sum. If there is a sum like this, we know that the rest of the elements will have the same sum. This can be justified by
+$$
+\frac{\sum^n_{i=1}a_i}{2}-\sum^n_{i=1}a_i = -\frac{\sum^n_{i=1}a_i}{2}
+$$
+Let's show this with an example:
+$$
+\text{We have the set: } A=\{1,3,5,7,8,2\} \\
+\sum^6_{i=1}a_1=26
+$$
+We now insert the sum divided by two and the set in the Subset_sum function. We ask the function if there is a subset of $A$ with the sum $\frac{26}{2}=13$. We find that for example $\{1,5,8\}$ yields the sum $13$ and that the rest $\{3,8,2\}$ also yields the sum $13$ Therefore *partition* will return *true*. 
+
+
+
