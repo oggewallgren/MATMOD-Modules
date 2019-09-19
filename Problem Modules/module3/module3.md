@@ -89,11 +89,13 @@ The start node is going to have zero in edges and exactly one out edge, while th
 When we use this together with negating all the edge values and adding a *start* and *end* node as described in *b)*. Then we will calculate the longest path by a linear programming model. This tells us that we can use a linear programming solver to find the minimum time.
 
 ### d)
-We interpret not knowing the exact duration means we only have an approximation of the time. An approximation of the time gives us an interval. Let's say for example, we know a task approximately has a duration of 4 days, but it could take both three and five days to complete.
+We interpret not knowing the exact duration means we only have an approximation of the time. An approximation of the time could be described by an interval. Let's say for example, we know a task approximately has a duration of 4 days, but it could take both three and five days to complete.
 
 We apply this to the task solving the "worst case" scenario. Meaning we use the highest duration of time in the interval. The downside of modeling the problem like this is that we won't get the minimal time to finish the project most of the time. But we know that we won't run into any trouble starting a task before a task it's dependent on is finished.
 
 A way to avoid this is to always use the lowest value in the interval. If we do this, we know that we will get the minimum time required every time we get it right. But the downside of this model is that we might start a task before a task it is dependent on is finished.
+
+Another way to is to just input the approximated value in the shortest path model that we described. This will give you the shortest amount of time based on estimated values. If you then update the model continously while working on the tasks, you could run the calculation multiple times to get a better description of the actual time it will take to complete the project. 
 
 ## 3. Conference Problem
 ### Using shortest path
