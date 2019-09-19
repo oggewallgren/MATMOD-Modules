@@ -2,13 +2,16 @@
 ## I. WEEKLY MEETING AND FOLLOW-UP LECTURE
 
 ### a) Did you have your compulsory weekly meeting with a supervisor?
-
+Yes
 
 ### b) Did both of you attend the compulsory follow-up lecture? If you already talked to us about this, please explain.
+Both of us attended the follow-up lecture
 
 ### c) If you were asked to talk to a supervisor about the main submission, who did you talk to?
+We were not asked to talk to a supervisor.
 
 ## II. WHAT DID YOU EXPERIENCE AND LEARN?
+
 
 Reflect on your experiences from working with the module and try to make the most out of them. If you reflect around individual problems (which is good), try to also draw general conclusions that may be helpful for you going forward (in this course and/or long-term). You are now encouraged to discuss the module with other groups!
 
