@@ -18,7 +18,7 @@
 ## 1. Using Basic Discrete Structures
 
 - Set: unordered collection of items. $\\$
-  When we have several persons signed up for a trip and we need to sort them into rooms according to accomodation preferences.
+  When we have several persons signed up for a trip.
 
 - Sequence: sequentially ordered collection of items. $\\$
   Movies sorted based on genre where one movie can appear under more than one genre
@@ -61,7 +61,7 @@ This solution can be justified by considering that we are looking for the longes
 
 Since we know that we can find the shortest path with linear programming, we can assume can that it also can be used together with the logic from $b)$.
 
-The shortest path can be said to be linear because it can follow the typical expression of a linear programing optimization.
+The shortest path can be modeled as a linear programming problem because it can follow the typical expression of a linear programing optimization.
 We can:
 
 - minimize an objective function.
@@ -173,4 +173,4 @@ $$
 \sum^6_{i=1}a_1=26
 $$
 
-We now insert the sum divided by two and the set in the Subset_sum function. We ask the function if there is a subset of $A$ with the sum $\frac{26}{2}=13$. We find that for example $\{1,5,8\}$ yields the sum $13$ and that the rest $\{3,8,2\}$ also yields the sum $13$ Therefore _partition_ will return _true_.
+We now insert the sum divided by two and the set in the Subset*sum function. We ask the function if there is a subset of $A$ with the sum $\frac{26}{2}=13$. We find that for example $\{1,5,8\}$ yields the sum $13$ and that the rest $\{3,8,2\}$ also yields the sum $13$ Therefore \_partition* will return _true_.
