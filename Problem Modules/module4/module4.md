@@ -64,19 +64,17 @@ The deffunctions seems like the part running the program. This is where we draw 
 
 The engine state rules defines the states we conclude to based on answers from the query rules. These defines satisfactory states and unsatisfactory states.
 
-The query rules defines what questions to ask and how to interpret the answers from the user. These rules are based on yes/no answers and are the core part of the knowledge base. The collection of answers from all questions results in a conclusion of the engine state.
+The query rules defines what questions to ask and how to interpret the answers from the user. These rules are based on yes/no answers and are the core part of the knowledge base. An answer or assertion from one question is then used to decide what question to ask next. The collection of answers from questions results in a conclusion of the engine state.
 
-Last we have the startup and repair rules. The startup rule presents information relevant to the launch of the tool. It for instances prints the welcome message we see when launching. The repair rule prints the information stored in *repair*. The contents of repair is determined by answering the yes or no questions about the engine. 
+Last we have the startup and repair rules. The startup rule presents information relevant to the launch of the tool. It for instances prints the welcome message we see when launching. The repair rule prints the information stored in _repair_. The contents of repair is determined by answering the yes or no questions about the engine.
 
+To model knowledge so that a computer can process we need to store the part that acts as the expert in the system it is defined for. Consider all the knowledge a mechanic has about car engines. This information cannot be stored in a database and be used to diagnose the engine with only a computer. The makers of clips solved this problem by using a set of questions with asssertions and consclusions. The program starts with a question, IF it is like this, then do that, else do another thing. For every answer we can make assertions and by these assertions later decide on which question to ask next until we land in a conclusion. In engine/mechanic case, the conclusion is when the system has a "repair" parameter. When we have a repair, skip the rest of the questions and print out the conclusion.
 
-To model knowledge so that a computer can process we need to store the part that acts as the expert in the system it is defined for. Consider all the knowledge a mechanic has about car engines. This information cannot be stored in a database and be used to diagnose the engine with only a computer. 
+### b)
 
+We think that a system that instead tries to assign probabilities to facts would still have yes or no questions. But instead of making binary assertion we would have to calculate the probability of a fact based on the yes/no answer. The probability of this fact would then have to be saved and used to determine what question to ask next. All questions would also have to take into consideration what the probability of the assertions/conclusions are and then update throughout the question process. At last it prints out all the possible conclusions at their probability.
 
-#### i) Information Represented
-
-#### ii)
-
-#### iii)
+We wold expect this to be more complicated as probability could change from one question to another. In compasison with binary assertions that keeps it value throughout the process once it's been given a value.
 
 ## 3. LIFE EXPECTANCY PROBLEM
 
