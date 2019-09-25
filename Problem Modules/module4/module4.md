@@ -66,7 +66,11 @@ The engine state rules defines the states we conclude to based on answers from t
 
 The query rules defines what questions to ask and how to interpret the answers from the user. These rules are based on yes/no answers and are the core part of the knowledge base. The collection of answers from all questions results in a conclusion of the engine state.
 
-Last we have the tartup and repair rules which defines what to be done after the questions have been answered.
+Last we have the startup and repair rules. The startup rule presents information relevant to the launch of the tool. It for instances prints the welcome message we see when launching. The repair rule prints the information stored in *repair*. The contents of repair is determined by answering the yes or no questions about the engine. 
+
+
+To model knowledge so that a computer can process we need to store the part that acts as the expert in the system it is defined for. Consider all the knowledge a mechanic has about car engines. This information cannot be stored in a database and be used to diagnose the engine with only a computer. 
+
 
 #### i) Information Represented
 
