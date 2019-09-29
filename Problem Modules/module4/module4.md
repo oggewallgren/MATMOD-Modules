@@ -58,7 +58,7 @@ We also feel like it is a good tool to use if you dont know the dimension of the
 
 ### a)
 
-We find that there are three parts of the program, deffunctions, engine start rules and query rules.
+We find that there are three parts of the program, deffunctions, engine state rules, query rules and start up and repair rules.
 
 The deffunctions seems like the part running the program. This is where we draw out the questions and collect answers from the user. The answers are then sent to evaluted by the rules.
 
@@ -72,9 +72,9 @@ To model knowledge so that a computer can process we need to store the part that
 
 ### b)
 
-We think that a system that instead tries to assign probabilities to facts would still have yes or no questions. But instead of making binary assertion we would have to calculate the probability of a fact based on the yes/no answer. The probability of this fact would then have to be saved and used to determine what question to ask next. All questions would also have to take into consideration what the probability of the assertions/conclusions are and then update throughout the question process. At last it prints out all the possible conclusions at their probability.
+We think that a system that instead tries to assign probabilities to facts would still have yes or no questions. But instead of making binary assertion we would have to calculate the probability of a fact based on the yes/no answer. The probability of this fact would then have to be saved and used to determine what question to ask next. All questions would also have to take into consideration what the probability of the assertions/conclusions are and then update throughout the question process. At last it prints out all the possible conclusions and their probability.
 
-We wold expect this to be more complicated as probability could change from one question to another. In compasison with binary assertions that keeps it value throughout the process once it's been given a value.
+We would expect this to be more complicated as probability could change from one question to another. In compasison with binary assertions that keeps it value throughout the process once it's been given a value.
 
 ## 3. LIFE EXPECTANCY PROBLEM
 
@@ -99,17 +99,17 @@ $$
 \end{bmatrix}
 +
 \begin{bmatrix}
-    x_{11} \ x_{12} \dots x_{150} \\
-     x_{21}\ x_{22} \dots x_{250} \\
+    x_{11} \ x_{12} \dots x_{11000} \\
+     x_{21}\ x_{22} \dots x_{21000} \\
       \vdots \\
-      x_{501} \ x_{502} \dots x_{5050}\\
+      x_{501} \ x_{502} \dots x_{501000}\\
 \end{bmatrix}
 \begin{bmatrix}
     \beta_1 \\ \beta_2 \\ \vdots \\ \beta_{50} \\
 \end{bmatrix}
 +
 \begin{bmatrix}
-    \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_1 \\
+    \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_{50} \\
 \end{bmatrix}
 $$
 
@@ -191,3 +191,15 @@ Plotting the function we get:
 With the points $0.0, 0.1, 0.5, 0.9, 1.0$. As we can see the avarage information acquired by the function streches from zero to the maximum value $0.693147$ when $p1=0.5$.
 
 ## 5. RESTAURANT PROBLEM
+
+Let's define what we have first:
+
+- Person $A$: wants to avoid $B$
+- Person $B$: wants to maximize time spent with $A$
+- Restaurant $X$: fancy restaurant, 50 minutes dining time
+- Restaurant $Y$: regular restaurant, 20 minutes dining time
+
+The ideal situation for person $B$ is to meet $A$ at restaurant $X$ every day, as that means 50 minutes spent together every day. For A, it's about minimizing time spent with B. Reasonably that would make A start with Restaurant $Y$ as worst case there would be 20 minutes time spent with $B$.
+
+Let's then think about it one day at a time.
+$A$ goes to $Y$, $B$ goes to $X$. For the second day, reasonably $B$ will change its choice but not $A$, as $B$ is unsatisfied and $A$ is satisfied. This results in a meet at $Y$. The next day it's the other way around. $A$ is unsatisfied but $B$ is not. This will make $A$ change its choice and eat at $X$. The day after $B$ is unsatisfied while $A$ is satisfied. $A$ stays at $X$ and $B$ changes to $X$. After four days $A$ and $B$ will have met twice, once at $X$ and another at $Y$. After four days we they have spent 70 minutes together over the course of four days. Following, they will try different patterns to maximize/minimized time spent together but reasonably an equilibrium will occur where they meet every other day, switching between restaurant $X$ and $Y$. This results in an avarage $\frac{70}{4}=17.5$ minutes spent on avarage every day.
