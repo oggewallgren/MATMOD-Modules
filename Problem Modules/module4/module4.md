@@ -121,7 +121,37 @@ As we have lots of attributes in consideration it is probably going to be alot b
 
 ### b) Quadratic model
 
-A quadratic model for life expectancy
+We feel that a quadratic model for life expectancy should make a better approximation on life expectancy. Because with a quadratic polynomial we can decide if we want vairables to depend on eachother by setting an appropriate coefficient. Let's try this with a 3-dimensional equation; $x_1-x_3$.
+
+$$
+f(x_1,x_2,x_3) = ax^2_1 + bx^2_2 + cx^2_3 + dx_1x_2 + ex_1x_3 + fx_2x_3 + gx_1 + hx_2 + ix_3 + j
+$$
+
+As we can see in the equation, we can choose to make variables depend on eachother by setting coefficients. Likewise we can set coefficients to zero if we want them to be independent. Let's say that $x_1$ and $x_2$ is daily workout and diabetes. Then we want $d$ to be non-zero because if a person has diabetes, workout can decrease the affect diabetes has on life expectancy.
+
+Another benefit of a quadratic polynomial is that the approximation is going to fit the data points better than a linear approximation. Since we use parabola instead of a tangent line we get a closer approximation beacause the parabola stays closer to the actual function.
+
+We know that the model won't be exact, consider the example of fitting one quadratic function to two different data points we can find an infinite number of functions that can fit the data points exact, with three points we can only find one exact and with more than three, the probability of a function being able to fit exactly radically decreases. As we have 1000 for each attribute, ours is very unlikely to be exact.
+
+### c) Other ways to model
+
+Can we find a better approximation than the ones we have already discussed? As we are working with approximation and therefore a probability we can use a normal distribution model to, in this case a multivariate normal distribution. A multivariate normal distribution is used to approximate any set of correlated real-valued random variables which cluster around a mean value. Reasonably we can find a mean value for each attribute and find a normal distribution. We will have the attributes:
+
+$$
+X = (X_1-X_{1000})
+$$
+
+Following we will have a mean-vector
+
+$$
+\mu = E(X) = (E(X_1), E(X_2), ..., E(X_{1000}))
+$$
+
+For each attribute we can also find a standard deviation and thereby model a normal distribution. The only thing we need to consider is if we think that our sample of 1000 deceased people could represent the entire population and make a good approximation. It is a known case that samples from a population can represent a normal distribution that fits reality rather good even though the population might not be normally distributed. One difficulty we encounter is that it is hard to determine whether variables are independent or not.
+
+### d) Machine learning
+
+We have a limited knowledge regarding neural networks and machine learning but reasonably a computer could better analyze the relation between variables. These dependencies are the toughest part for us to model. We believe that if you train an neural network, a computer can become much better in quantifiying this relation compared to a human. A neural network could thereby find patterns that is hard for us and therefore discover a better model. In addition to this, a computer could digest and learn from a larger set of data. When it becomes difficult for us to comprehend big data, the neural network could benefit from it, making the model even better.
 
 ## 4. EXPECTED INFORMATION PROBLEM
 
