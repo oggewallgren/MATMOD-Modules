@@ -41,13 +41,13 @@ The problem has the same number of variables as there are objects in `FOOD`, 63.
 We are going to consider two situations. One where we have a many data points and lots of constraints needed. The other with few data points and constraints.
 
 - optimization in standard format
-  - For a problem with many data points, these techniques seem very ineffective as we cannot loop to create neither variables or constraints. This means that it will require many lines of code to model it.
+  - For a problem with many data points, these techniques seem very ineffective as we cannot loop to create neither variables nor constraints. This means that it will require many lines of code to model it.
   - For a problem with few data points, modelling it with the standard formats _lp_ and _mps_ feels reasonable. LP looks similar to mathematica which we know is effective in simple situations. MPS looks like it required more lines of code than LP as it is column orientet and is therefore less effective to program manually than LP.
 - Using AMPL
   - For large data sets AMPL seems like the best choice. That i because we can loop and declare many variables and constraints on just one line of code. AMPL also seems realistic as it looks easy to use existing data from E.g a database to create sets in which you can perform calculations on.
   - Even for a problem with a small amount of data points it seems reasonable to use AMPL. The syntax of AMPL feels similiar to the mathematical notation of optimization problems.
 
-We also feel like it is a good tool to use if you dont know the dimension of the model you are suppose to define. No matter the size of the problem. This is because you can define groups of constraints that really dont care about the model dimensions. We also feel like it would be rather easy to make "big" changes quickly to your model, without much of an effort, which is a good thing.
+We also feel like it is a good tool to use if you dont know the dimension of the model you are supposed to define. No matter the size of the problem. This is because you can define groups of constraints that really dont care about the model dimensions. We also feel like it would be rather easy to make "big" changes quickly to your model, without much of an effort, which is a good thing.
 
 - Using Mathematica
   - Matimatica us good to use for simpler problem as it is easy to understand and fairly quick to set up. But as it also feels more like a multi purpose tool, it is better to use AMPL specifically for linear programming problems.
@@ -62,11 +62,11 @@ We find that there are three parts of the program, deffunctions, engine state ru
 
 The deffunctions seems like the part running the program. This is where we draw out the questions and collect answers from the user. The answers are then sent to evaluted by the rules.
 
-The engine state rules defines the states we conclude to based on answers from the query rules. These defines satisfactory states and unsatisfactory states.
+The engine state rules define the states we conclude to based on answers from the query rules. These defines satisfactory states and unsatisfactory states.
 
-The query rules defines what questions to ask and how to interpret the answers from the user. These rules are based on yes/no answers and are the core part of the knowledge base. An answer or assertion from one question is then used to decide what question to ask next. The collection of answers from questions results in a conclusion of the engine state.
+The query rules define what questions to ask and how to interpret the answers from the user. These rules are based on yes/no answers and are the core part of the knowledge base. An answer or assertion from one question is then used to decide what question to ask next. The collection of answers from questions results in a conclusion of the engine state.
 
-Last we have the startup and repair rules. The startup rule presents information relevant to the launch of the tool. It for instances prints the welcome message we see when launching. The repair rule prints the information stored in _repair_. The contents of repair is determined by answering the yes or no questions about the engine.
+Last, we have the startup and repair rules. The startup rule presents information relevant to the launch of the tool. It for instances prints the welcome message we see when launching. The repair rule prints the information stored in _repair_. The contents of repair are determined by answering the yes or no questions about the engine.
 
 To model knowledge so that a computer can process we need to store the part that acts as the expert in the system it is defined for. Consider all the knowledge a mechanic has about car engines. This information cannot be stored in a database and be used to diagnose the engine with only a computer. The makers of clips solved this problem by using a set of questions with asssertions and consclusions. The program starts with a question, IF it is like this, then do that, else do another thing. For every answer we can make assertions and by these assertions later decide on which question to ask next until we land in a conclusion. In engine/mechanic case, the conclusion is when the system has a "repair" parameter. When we have a repair, skip the rest of the questions and print out the conclusion.
 
@@ -82,7 +82,7 @@ We would expect this to be more complicated as probability could change from one
 
 #### i) Would the data be sufficient to fit such a model?
 
-We believe that the data is sufficient to fit a multidimensional linear model because we have data of 1000 deceased poeple and 50 attributes. There will be a few different types of variables. We will have some binary variables, like "has cancer/doesn't have cancer", other variables like length and weight are going to be continuous and also variables harder to define like "type of work", living location and education. We know that each variable is accompaied by a coefficient determining its affect on lifespan. The binary variables are going to be easier to define than the other. But as we have data from 1000 people we belive we will have sufficient data to determine a linear model.
+We believe that the data is sufficient to fit a multidimensional linear model because we have data of 1000 deceased poeple and 50 attributes. There will be a few different types of variables. We will have some binary variables, like "has cancer/doesn't have cancer", other variables like length and weight are going to be continuous and also variables harder to define like "type of work", living location and education. We know that each variable is accompaied by a coefficient determining its affect on lifespan. The binary variables are going to be easier to define than the other. But as we have data from 1000 people, we belive we will have sufficient data to determine a linear model.
 
 #### ii) Can the least squares method be used?
 
@@ -127,15 +127,15 @@ $$
 f(x_1,x_2,x_3) = ax^2_1 + bx^2_2 + cx^2_3 + dx_1x_2 + ex_1x_3 + fx_2x_3 + gx_1 + hx_2 + ix_3 + j
 $$
 
-As we can see in the equation, we can choose to make variables depend on eachother by setting coefficients. Likewise we can set coefficients to zero if we want them to be independent. Let's say that $x_1$ and $x_2$ is daily workout and diabetes. Then we want $d$ to be non-zero because if a person has diabetes, workout can decrease the affect diabetes has on life expectancy.
+As we can see in the equation, we can choose to make variables depend on eachother by setting coefficients. Likewise, we can set coefficients to zero if we want them to be independent. Let's say that $x_1$ and $x_2$ is daily workout and diabetes. Then we want $d$ to be non-zero because if a person has diabetes, workout can decrease the affect diabetes has on life expectancy.
 
-Another benefit of a quadratic polynomial is that the approximation is going to fit the data points better than a linear approximation. Since we use parabola instead of a tangent line we get a closer approximation beacause the parabola stays closer to the actual function.
+Another benefit of a quadratic polynomial is that the approximation is going to fit the data points better than a linear approximation. Since we use parabola instead of a tangent line, we get a closer approximation beacause the parabola stays closer to the actual function.
 
 We know that the model won't be exact, consider the example of fitting one quadratic function to two different data points we can find an infinite number of functions that can fit the data points exact, with three points we can only find one exact and with more than three, the probability of a function being able to fit exactly radically decreases. As we have 1000 for each attribute, ours is very unlikely to be exact.
 
 ### c) Other ways to model
 
-Can we find a better approximation than the ones we have already discussed? As we are working with approximation and therefore a probability we can use a normal distribution model to, in this case a multivariate normal distribution. A multivariate normal distribution is used to approximate any set of correlated real-valued random variables which cluster around a mean value. Reasonably we can find a mean value for each attribute and find a normal distribution. We will have the attributes:
+Can we find a better approximation than the ones we have already discussed? As we are working with approximation and therefore a probability, we can use a normal distribution model to, in this case a multivariate normal distribution. A multivariate normal distribution is used to approximate any set of correlated real-valued random variables which cluster around a mean value. Reasonably we can find a mean value for each attribute and find a normal distribution. We will have the attributes:
 
 $$
 X = (X_1-X_{1000})
@@ -157,7 +157,7 @@ We have a limited knowledge regarding neural networks and machine learning but r
 
 To find to the formula to $I(p1)$ we start b y defining what we know and what we can calculate.
 
-- Probabilty for a _one_ is $p1$
+- Probability for a _one_ is $p1$
 - Probability for a _zero_ is $1-p1$
 
 We know form previous module that the function for amount of information is $-log(p)$. From this we can deduce the information of a _one_ and the information of a _zero_
@@ -186,7 +186,7 @@ $$
 I(p1) = -log(p1)*p1-log(1-p1)*(1-p1)
 $$
 
-Plotting the function we get:
+Plotting the function, we get:
 ![](up4mod4.png)
 With the points $0.0, 0.1, 0.5, 0.9, 1.0$. As we can see the avarage information acquired by the function streches from zero to the maximum value $0.693147$ when $p1=0.5$.
 
@@ -199,7 +199,29 @@ Let's define what we have first:
 - Restaurant $X$: fancy restaurant, 50 minutes dining time
 - Restaurant $Y$: regular restaurant, 20 minutes dining time
 
-The ideal situation for person $B$ is to meet $A$ at restaurant $X$ every day, as that means 50 minutes spent together every day. For A, it's about minimizing time spent with B. Reasonably that would make A start with Restaurant $Y$ as worst case there would be 20 minutes time spent with $B$.
+We know that $A$ would rather choose the 20-minute resturant and $B$ would rather choose the 50-minute resturant based on these facts above. We know that we need the total time spent on one place as a factor to the total time. Let's say that the avarage time they have spent together at restaruant $X$ will be $50*\text{(probability A goes to X)*(probability B goes to X)}$. For the other restaurant, avarage time spent together will be $20*\text{(probability A goes to Y)*(probability B goes to Y)}$. This means that the total average time spent together will be
 
-Let's then think about it one day at a time.
-$A$ goes to $Y$, $B$ goes to $X$. For the second day, reasonably $B$ will change its choice but not $A$, as $B$ is unsatisfied and $A$ is satisfied. This results in a meet at $Y$. The next day it's the other way around. $A$ is unsatisfied but $B$ is not. This will make $A$ change its choice and eat at $X$. The day after $B$ is unsatisfied while $A$ is satisfied. $A$ stays at $X$ and $B$ changes to $X$. After four days $A$ and $B$ will have met twice, once at $X$ and another at $Y$. After four days we they have spent 70 minutes together over the course of four days. Following, they will try different patterns to maximize/minimized time spent together but reasonably an equilibrium will occur where they meet every other day, switching between restaurant $X$ and $Y$. This results in an avarage $\frac{70}{4}=17.5$ minutes spent on avarage every day.
+$$
+50*\text{(probability A goes to X)*(probability B goes to X)} + 20*\text{(probability A goes to Y)*(probability B goes to Y)}
+$$
+
+Simplifying this with probability $A$/$B$ goes to $X$ = $A_X$/$B_X$ and $A_Y$/$B_Y$ for the other restaurant.
+
+Here we want to find a value for the probability of A where the probability of B dosent matter anymore. If we again consider the fact that A would like to favour resturant $Y$.
+
+The total time of $X$ and $Y$ together is 70 minutes. We know that person A favors the 20 minutes due to the facts stated earlier. If we want to choose a proportion of the time that $A$ wants to go to $Y$, we need to match it with the time at $X$, beeing 50. This results in 50 minutes out of 70 minutes $\frac{50}{70}$ of resturant $Y$.
+
+The value in the formula for $A_Y$ that would yield that $B_Y$ won't matter is $A_Y=\frac{50}{70}$ as.
+This yields that $A_X=\frac{20}{70}$. The same theory applies for person $B$ but in reverse. Person $B$ wants to maximize time spent in restaurant $X$ together with $A$. This results in the total avarage time:
+
+$$
+50(1-A_Y) (1-B_Y) + 20A_Y B_Y = 50(1-A_Y) (1-B_Y) + 20A_Y B_Y =
+$$
+
+$$
+=50*\frac{20}{70}*\frac{50}{70} + 20*\frac{50}{70}*\frac{20}{70} =
+$$
+
+$$
+ = 50*\frac{20}{70}+20*\frac{50}{70} = 14,2857 \text{ minutes}
+$$
