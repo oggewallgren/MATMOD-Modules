@@ -78,6 +78,51 @@ We wold expect this to be more complicated as probability could change from one 
 
 ## 3. LIFE EXPECTANCY PROBLEM
 
+### a) Multidimensional linear model
+
+#### i) Would the data be sufficient to fit such a model?
+
+We believe that the data is sufficient to fit a multidimensional linear model because we have data of 1000 deceased poeple and 50 attributes. There will be a few different types of variables. We will have some binary variables, like "has cancer/doesn't have cancer", other variables like length and weight are going to be continuous and also variables harder to define like "type of work", living location and education. We know that each variable is accompaied by a coefficient determining its affect on lifespan. The binary variables are going to be easier to define than the other. But as we have data from 1000 people we belive we will have sufficient data to determine a linear model.
+
+#### ii) Can the least squares method be used?
+
+We believe it is possible to use the least square method to determine a multidimensional model. Imagine that for each attribute it is possible to make a 2-dimensional linear regression. Let's say we do this for all attrubutes and combine them together into a multidomensional model. This works as they all have $y$-variable (life span) in common. We start by trying to define it mathematically.
+We will have a vector.
+
+$$
+\begin{bmatrix}
+    y_1\\y_2\\\vdots\\y_{50}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    c \\ c \\ \vdots \\ c
+\end{bmatrix}
++
+\begin{bmatrix}
+    x_{11} \ x_{12} \dots x_{150} \\
+     x_{21}\ x_{22} \dots x_{250} \\
+      \vdots \\
+      x_{501} \ x_{502} \dots x_{5050}\\
+\end{bmatrix}
+\begin{bmatrix}
+    \beta_1 \\ \beta_2 \\ \vdots \\ \beta_{50} \\
+\end{bmatrix}
++
+\begin{bmatrix}
+    \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_1 \\
+\end{bmatrix}
+$$
+
+We then try to minimize the error $min\sum^{50}_{i=1}\epsilon^2_i$. This seems possible but hard to imagine the approximation between points in a dimension this high.
+
+#### iii) How good do you think the model would be?
+
+As we have lots of attributes in consideration it is probably going to be alot better than a guess. What this model lacks is that it doesn't take into consideration how one attribute could affect another. For example, if a person is sick, it is probably going to affect whether or not this person can work out. Reasonably variables will affect eachother and not be linear.
+
+### b) Quadratic model
+
+A quadratic model for life expectancy
+
 ## 4. EXPECTED INFORMATION PROBLEM
 
 ## 5. RESTAURANT PROBLEM
