@@ -155,4 +155,39 @@ We have a limited knowledge regarding neural networks and machine learning but r
 
 ## 4. EXPECTED INFORMATION PROBLEM
 
+To find to the formula to $I(p1)$ we start b y defining what we know and what we can calculate.
+
+- Probabilty for a _one_ is $p1$
+- Probability for a _zero_ is $1-p1$
+
+We know form previous module that the function for amount of information is $-log(p)$. From this we can deduce the information of a _one_ and the information of a _zero_
+
+- Information from a _one_ is $-log(p1)$
+- Information from a _zero_ is $-log(1-p1)$
+
+Now we need the total amount of information from a _ones_ and _zeros_. We know the probability of them. If we have a file with $n$ bits, then the amount of ones is $n*p1$, and the amount of zeros is $n*(1-p1)$. With this we can calculate the total amount of information respectively.
+
+- Total amount information all _ones_ is $n*p1*-log(p1)$
+- Total amount information all _zeros_ is $n*(1-p1)*-log(1-p1)$
+
+This means that the avarge information for both ones and zeros will be:
+
+$$
+\text{Avarage information} = \frac{\text{information for all ones}+\text{information for all zeros}}{n}
+$$
+
+$$
+= \frac{(n*p1*-log(p1)+(-log(1-p1)*n*(1-p1)))}{n}=-log(p1)*p1-log(1-p1)*(1-p1)
+$$
+
+This gives us the final function
+
+$$
+I(p1) = -log(p1)*p1-log(1-p1)*(1-p1)
+$$
+
+Plotting the function we get:
+![](up4mod4.png)
+With the points $0.0, 0.1, 0.5, 0.9, 1.0$. As we can see the avarage information acquired by the function streches from zero to the maximum value $0.693147$ when $p1=0.5$.
+
 ## 5. RESTAURANT PROBLEM
