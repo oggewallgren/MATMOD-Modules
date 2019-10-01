@@ -27,14 +27,23 @@ class Model {
 				height * 0.9, // y pos
 				1.2, // vx
 				1.6, // vy
-				0.2, // radius
-				0.5 // weight
+				0.2 // radius
 		);
-		balls[1] = new Ball(2 * width / 3, height * 0.7, -0.6, 0.6, 0.3, 1);
+		balls[1] = new Ball(
+			2 * width / 3,
+			height * 0.7,
+			-0.6,
+			0.6,
+			0.3
+			);
 	}
 
 	void step(double deltaT) {
-		// TODO this method implements one step of simulation with a step deltaT
+		ballCollision();
+		borderCollision(deltaT);
+	}
+
+	void ballCollision() {
 		for (int i = 0; i < balls.length - 1; i++) {
 			for (int j = i + 1; j < balls.length; j++) {
 
@@ -45,8 +54,9 @@ class Model {
 				double dy = b1.y - b2.y;
 				double delta = b1.radius + b2.radius;
 				double rotAngle = Math.atan(dy / dx);
-
-				if (dx * dx + dy * dy < delta * delta) {
+				
+			
+				if ((dx * dx) + (dy * dy) < (delta * delta)) {
 					double I = b1.weight * b1.vx + b2.weight * b2.vx;
 					double R = b2.vx - b1.vx;
 
@@ -64,14 +74,33 @@ class Model {
 				}
 			}
 		}
+	}
 
+	void borderCollision(double deltaT){
 		for (Ball b : balls) {
 			// detect collision with the border
 			if (b.x < b.radius || b.x > areaWidth - b.radius) {
 				b.vx *= -1; // change direction of ball
 			}
-			if (b.y < b.radius || b.y > areaHeight - b.radius) {
-				b.vy *= -1;
+
+			if (b.y < b.radius ) {
+				if (b.vy < 0) {
+					b.vy = -b.vy;
+				}
+				else {
+					b.vy = b.vy;
+				} 
+			}
+			else if (b.y > areaHeight - b.radius) {
+				if (b.vy < 0) {
+					b.vy = b.vy;
+				}
+				else {
+					b.vy = -b.vy;
+				}
+			}
+			else {
+				b.vy = b.vy - 5.8*deltaT;
 			}
 
 			// compute new position according to the speed of the ball
@@ -92,17 +121,16 @@ class Model {
 		double x, y, vx, vy, radius, weight, speed, angle;
 		// , angle;
 
-		Ball(double x, double y, double vx, double vy, double r, double weight) {
+		Ball(double x, double y, double vx, double vy, double r) {
 			this.x = x;
 			this.y = y;
 			this.vx = vx;
 			this.vy = vy;
 			this.radius = r;
-			this.weight = weight;
+			this.weight = this.radius * 2;
 		}
 
 		void rotateBall(double rangle) {
-			// TODO
 			rectToPolar();
 			angle += rangle;
 			polarToRect();
