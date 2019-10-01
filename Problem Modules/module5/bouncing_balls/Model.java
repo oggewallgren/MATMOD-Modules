@@ -44,20 +44,20 @@ class Model {
 				double dy = b1.y - b2.y;
 				double delta = b1.radius + b2.radius;
 
-				if (dx * dx + dy * dy < delta * delta) {
-					double rotAngle = Math.atan(dy / dx);
-					double I = b1.weight * b1.vx + b2.weight * b2.vx;
-					double R = b2.vx - b1.vx;
+				if (dx * dx + dy * dy <= delta * delta) {
+					double angleDiff = Math.atan(dy / dx);
 
-					b1.rotateBall(-rotAngle);
-					b2.rotateBall(-rotAngle);
+					b1.rotateBall(-angleDiff);
+					b2.rotateBall(-angleDiff);
 
-					b2.vx = ((I - b2.weight * R) / (b1.weight + b2.weight));
-					b1.vx = R + b1.vx;
+					double I = b1.mass * b1.vx + b2.mass * b2.vx;
+					double R = -(b2.vx - b1.vx);
 
-					b1.rotateBall(rotAngle);
-					b2.rotateBall(rotAngle);
+					b1.vx = (I - b2.mass * R) / (b1.mass + b2.mass);
+					b2.vx = (R + b1.vx);
 
+					b1.rotateBall(angleDiff);
+					b2.rotateBall(angleDiff);
 				}
 			}
 		}
@@ -101,7 +101,7 @@ class Model {
 		 * Position, speed, and radius of the ball. You may wish to add other
 		 * attributes.
 		 */
-		double x, y, vx, vy, radius, weight, speed, angle;
+		double x, y, vx, vy, radius, mass, speed, angle;
 		// , angle;
 
 		Ball(double x, double y, double vx, double vy, double r) {
@@ -110,12 +110,12 @@ class Model {
 			this.vx = vx;
 			this.vy = vy;
 			this.radius = r;
-			this.weight = this.radius * 2;
+			this.mass = this.radius * 2;
 		}
 
-		void rotateBall(double rangle) {
+		void rotateBall(double angleDiff) {
 			rectToPolar();
-			angle += rangle;
+			angle += angleDiff;
 			polarToRect();
 		}
 
