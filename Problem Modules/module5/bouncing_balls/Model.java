@@ -12,6 +12,7 @@ package bouncing_balls;
  *
  */
 class Model {
+	final double gravity = 9.8;
 
 	double areaWidth, areaHeight;
 
@@ -23,19 +24,8 @@ class Model {
 
 		// Initialize the model with a few balls
 		balls = new Ball[2];
-		balls[0] = new Ball(width / 3, // x pos
-				height * 0.9, // y pos
-				1.2, // vx
-				1.6, // vy
-				0.2 // radius
-		);
-		balls[1] = new Ball(
-			2 * width / 3,
-			height * 0.7,
-			-0.6,
-			0.6,
-			0.3
-			);
+		balls[0] = new Ball(width / 3, height * 0.9, 1.2, 1.2, 0.2);
+		balls[1] = new Ball(2 * width / 4, height * 0.4, -0.6, 0.6, 0.3);
 	}
 
 	void step(double deltaT) {
@@ -53,20 +43,17 @@ class Model {
 				double dx = b1.x - b2.x;
 				double dy = b1.y - b2.y;
 				double delta = b1.radius + b2.radius;
-				double rotAngle = Math.atan(dy / dx);
-				
-			
-				if ((dx * dx) + (dy * dy) < (delta * delta)) {
+
+				if (dx * dx + dy * dy < delta * delta) {
+					double rotAngle = Math.atan(dy / dx);
 					double I = b1.weight * b1.vx + b2.weight * b2.vx;
 					double R = b2.vx - b1.vx;
 
 					b1.rotateBall(-rotAngle);
 					b2.rotateBall(-rotAngle);
 
-					// b1.vy *= -1;
-					b1.vx = ((I - b2.weight * R) / (b1.weight + b2.weight));
-					// b2.vy *= -1;
-					b2.vx = R + b1.vx;
+					b2.vx = ((I - b2.weight * R) / (b1.weight + b2.weight));
+					b1.vx = R + b1.vx;
 
 					b1.rotateBall(rotAngle);
 					b2.rotateBall(rotAngle);
@@ -76,31 +63,27 @@ class Model {
 		}
 	}
 
-	void borderCollision(double deltaT){
+	void borderCollision(double deltaT) {
 		for (Ball b : balls) {
 			// detect collision with the border
 			if (b.x < b.radius || b.x > areaWidth - b.radius) {
 				b.vx *= -1; // change direction of ball
 			}
 
-			if (b.y < b.radius ) {
+			if (b.y < b.radius) {
 				if (b.vy < 0) {
 					b.vy = -b.vy;
-				}
-				else {
+				} else {
 					b.vy = b.vy;
-				} 
-			}
-			else if (b.y > areaHeight - b.radius) {
+				}
+			} else if (b.y > areaHeight - b.radius) {
 				if (b.vy < 0) {
 					b.vy = b.vy;
-				}
-				else {
+				} else {
 					b.vy = -b.vy;
 				}
-			}
-			else {
-				b.vy = b.vy - 5.8*deltaT;
+			} else {
+				b.vy = b.vy - 5.8 * deltaT;
 			}
 
 			// compute new position according to the speed of the ball
