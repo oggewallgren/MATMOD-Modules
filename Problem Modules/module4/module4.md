@@ -135,7 +135,7 @@ We know that the model won't be exact, consider the example of fitting one quadr
 
 ### c) Other ways to model
 
-Can we find a better approximation than the ones we have already discussed? As we are working with approximation and therefore a probability, we can use a normal distribution model to, in this case a multivariate normal distribution. A multivariate normal distribution is used to approximate any set of correlated real-valued random variables which cluster around a mean value. Reasonably we can find a mean value for each attribute and find a normal distribution. We will have the attributes:
+Can we find a better approximation than the ones we have already discussed? As we are working with approximation, we can use a normal distribution model, in this case a multivariate normal distribution. A multivariate normal distribution is used to approximate any set of correlated real-valued random variables which cluster around a mean value. Reasonably we can find a mean value for each attribute and find a normal distribution. We will have the attributes:
 
 $$
 X = (X_1-X_{1000})
@@ -187,7 +187,9 @@ I(p1) = -log(p1)*p1-log(1-p1)*(1-p1)
 $$
 
 Plotting the function, we get:
+
 ![](up4mod4.png)
+
 With the points $0.0, 0.1, 0.5, 0.9, 1.0$. As we can see the avarage information acquired by the function streches from zero to the maximum value $0.693147$ when $p1=0.5$.
 
 ## 5. RESTAURANT PROBLEM
@@ -199,17 +201,29 @@ Let's define what we have first:
 - Restaurant $X$: fancy restaurant, 50 minutes dining time
 - Restaurant $Y$: regular restaurant, 20 minutes dining time
 
-We know that $A$ would rather choose the 20-minute resturant and $B$ would rather choose the 50-minute resturant based on these facts above. We know that we need the total time spent on one place as a factor to the total time. Let's say that the avarage time they have spent together at restaruant $X$ will be $50*\text{(probability A goes to X)*(probability B goes to X)}$. For the other restaurant, avarage time spent together will be $20*\text{(probability A goes to Y)*(probability B goes to Y)}$. This means that the total average time spent together will be
+We know that $A$ would rather choose the 20-minute resturant and $B$ would rather choose the 50-minute resturant based on these facts above. We know that we need the total time spent on one place as a factor to the total time. Let's say that the avarage time they have spent together at restaruant $X$ will be
+
+$$
+50*\text{(probability A goes to X)*(probability B goes to X)}
+$$
+
+For the other restaurant, avarage time spent together will be
+
+$$
+20*\text{(probability A goes to Y)*(probability B goes to Y)}
+$$
+
+This means that the total average time spent together will be
 
 $$
 50*\text{(probability A goes to X)*(probability B goes to X)} + 20*\text{(probability A goes to Y)*(probability B goes to Y)}
 $$
 
-Simplifying this with probability $A$/$B$ goes to $X$ = $A_X$/$B_X$ and $A_Y$/$B_Y$ for the other restaurant.
+Simplifying this with probability $A/B$ goes to $X$ = $A_X/B_X$ and $A_Y/B_Y$ for the other restaurant.
 
-Here we want to find a value for the probability of A where the probability of B dosent matter anymore. If we again consider the fact that A would like to favour resturant $Y$.
+Here we want to find a value for the probability of $A$ where the probability that $B$ doesn't matter anymore. If we again consider the fact that A would like to favour resturant $Y$.
 
-The total time of $X$ and $Y$ together is 70 minutes. We know that person A favors the 20 minutes due to the facts stated earlier. If we want to choose a proportion of the time that $A$ wants to go to $Y$, we need to match it with the time at $X$, beeing 50. This results in 50 minutes out of 70 minutes $\frac{50}{70}$ of resturant $Y$.
+The total time of $X$ and $Y$ together is 70 minutes. We know that person $A$ favors the 20 minutes due to the facts stated earlier. If we want to choose a proportion of the time that $A$ wants to go to $Y$, we need to match it with the time at $X$, beeing 50. This results in 50 minutes out of 70 minutes $\frac{50}{70}$ of resturant $Y$.
 
 The value in the formula for $A_Y$ that would yield that $B_Y$ won't matter is $A_Y=\frac{50}{70}$ as.
 This yields that $A_X=\frac{20}{70}$. The same theory applies for person $B$ but in reverse. Person $B$ wants to maximize time spent in restaurant $X$ together with $A$. This results in the total avarage time:

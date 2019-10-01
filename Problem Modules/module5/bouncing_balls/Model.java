@@ -5,7 +5,8 @@ package bouncing_balls;
  * 
  * This class is where you should implement your bouncing balls model.
  * 
- * The code has intentionally been kept as simple as possible, but if you wish, you can improve the design.
+ * The code has intentionally been kept as simple as possible, but if you wish,
+ * you can improve the design.
  * 
  * @author Simon Robillard
  *
@@ -13,44 +14,57 @@ package bouncing_balls;
 class Model {
 
 	double areaWidth, areaHeight;
-	
-	Ball [] balls;
+
+	Ball[] balls;
 
 	Model(double width, double height) {
 		areaWidth = width;
 		areaHeight = height;
-		
+
 		// Initialize the model with a few balls
 		balls = new Ball[2];
-		balls[0] = new Ball(width / 3, height * 0.9, 1.2, 1.6, 0.2, 0.5);
-		balls[1] = new Ball(2 * width / 3, height * 0.7, -0.6, 0.6, 0.3, 0.5);
+		balls[0] = new Ball(width / 3, // x pos
+				height * 0.9, // y pos
+				1.2, // vx
+				1.6, // vy
+				0.2, // radius
+				0.5 // weight
+		);
+		balls[1] = new Ball(2 * width / 3, height * 0.7, -0.6, 0.6, 0.3, 1);
 	}
 
 	void step(double deltaT) {
 		// TODO this method implements one step of simulation with a step deltaT
 		for (int i = 0; i < balls.length - 1; i++) {
 			for (int j = i + 1; j < balls.length; j++) {
-				
+
 				Ball b1 = balls[i];
 				Ball b2 = balls[j];
 
 				double dx = b1.x - b2.x;
 				double dy = b1.y - b2.y;
 				double delta = b1.radius + b2.radius;
+				double rotAngle = Math.atan(dy / dx);
 
-				if (dx*dx+dy*dy < delta*delta) {
-					b1.vy *= -1;
-					b1.vx *= -1;
-					b2.vy *= -1;
-					b2.vx *= -1;
+				if (dx * dx + dy * dy < delta * delta) {
+					double I = b1.weight * b1.vx + b2.weight * b2.vx;
+					double R = b2.vx - b1.vx;
+
+					b1.rotateBall(-rotAngle);
+					b2.rotateBall(-rotAngle);
+
+					// b1.vy *= -1;
+					b1.vx = ((I - b2.weight * R) / (b1.weight + b2.weight));
+					// b2.vy *= -1;
+					b2.vx = R + b1.vx;
+
+					b1.rotateBall(rotAngle);
+					b2.rotateBall(rotAngle);
+
 				}
 			}
 		}
-		
-		
-		
-		
-		
+
 		for (Ball b : balls) {
 			// detect collision with the border
 			if (b.x < b.radius || b.x > areaWidth - b.radius) {
@@ -59,23 +73,24 @@ class Model {
 			if (b.y < b.radius || b.y > areaHeight - b.radius) {
 				b.vy *= -1;
 			}
-			
+
 			// compute new position according to the speed of the ball
-			b.x += deltaT * b.vx ;
+			b.x += deltaT * b.vx;
 			b.y += deltaT * b.vy;
 		}
 	}
-	
+
 	/**
 	 * Simple inner class describing balls.
 	 */
 	class Ball {
 
 		/**
-		 * Position, speed, and radius of the ball. You may wish to add other attributes.
+		 * Position, speed, and radius of the ball. You may wish to add other
+		 * attributes.
 		 */
-		double x, y, vx, vy, radius, weight;
-		//, angle;
+		double x, y, vx, vy, radius, weight, speed, angle;
+		// , angle;
 
 		Ball(double x, double y, double vx, double vy, double r, double weight) {
 			this.x = x;
@@ -83,22 +98,29 @@ class Model {
 			this.vx = vx;
 			this.vy = vy;
 			this.radius = r;
-			this.weight = radius * 2;
+			this.weight = weight;
 		}
 
-		void rotateBall(double angle){
-			//TODO
+		void rotateBall(double rangle) {
+			// TODO
+			rectToPolar();
+			angle += rangle;
+			polarToRect();
 		}
 
 		void rectToPolar() {
-
+			speed = Math.sqrt(vx * vx + vy * vy);
+			angle = Math.atan(vy / vx);
+			if (vx < 0) {
+				angle += Math.PI;
+			}
 		}
 
 		void polarToRect() {
+			vx = Math.cos(angle) * speed;
+			vy = Math.sin(angle) * speed;
 
 		}
 
-		
-		
 	}
 }
