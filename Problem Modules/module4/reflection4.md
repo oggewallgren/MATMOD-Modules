@@ -24,7 +24,9 @@ We started with the Life Expectancy problem discussion how 50 attributes from a 
 
 We discussed how a normal distribution considering all 50 attributes and came to the conclusion that there is in fact a way to model a multivariate normal distribution in the case of several attribures. We reasoned that this would be a good approach and give a better representation of life expectancy that both previous models. This can partly be justified by that for an attribute like weight, we want to know if a person is overweight or underweight, this can easier be modeled with normal distribution.
 
-Modeling this with machine learning seems at first like a good idea. But for a machine learning algoritm to be really good we would need lots more data than 1000 cases. This is because we would have to train the algoritm before we can actually use it.
+Modeling this with machine learning seems at first like a good idea. But for a machine learning algoritm to be really good we might need more data than 1000 cases. This is because we would have to train the algoritm before we can actually use it. We reasoned that by using machine learning we could get a computer to define the relations between certain variables better than what we humans could.
+
+In the expected information problem
 
 The restaurant problem was at first difficult to approach, we spent a long time thinking about different strategies and broke the problem down to smaller parts. Like, what would happen over the course of four days? five days? We set up ideal cases for both person which led us to that person $A$ would prefer the regualar restaurant and person $B$ the other. Following we learned think of a "personal strategy" in a methematical way and model it accordingly.
 
