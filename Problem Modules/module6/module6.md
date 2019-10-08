@@ -65,7 +65,11 @@ Simulating this with Euler's method in a table of the values looks like this:
 
 This means that with starting values $3'000$ whales and $700'000$ krill, results changes to $654'963$ krill and $3'351$ whales after $0.6$ years.
 ### d)
+To start of this analysis we use want to see what it looks like along both axises. $k=20000, w=0$. We can see that the krill population is going to start off at $20'000$ and then take off like shit! The opposite goes for the whales. It's going to start start high and then drop to zero, where it will stay.
 
+Using the same values as in **c)** we get a completely different result. Both the values from $k$ and $w$ are pending from high to low, depending on eachother. We see that when the krill population is reaching its peak, the population of whales increses drastically and affects the krill population to decrease drastically. The same thing happens in reverse when whale population hits its peak. 
+
+Another conclusion we can draw by picking diffrent starting points is that the values start to circle around the equilibrium. If the krill is low and whale is high the values are changing, meaning that krill starts increasing and whales decreasing. This justifies the equlibrium that we found in b. 
 ### e)
 ### f)
 
