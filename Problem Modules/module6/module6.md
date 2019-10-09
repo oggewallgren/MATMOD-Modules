@@ -81,7 +81,10 @@ Starting with the first graph generated from the code we interpret it as a visua
 ![](graph1.png)![](graph2.png)
 2000hrtz
 ## 3. Drug Dosage Problem
+To be able to find a model for drog dosage we first need to discuss what happens taking only one dose. It seems reasonable that the blood concentration should follow function with a steep angle upwards and a flatter line going down. This is because the active substance can be released quickly into the system but stays there longer. This is visualized in the graph below:
+![](up3drugdose.jpeg)
 
+To find a good model we want to find a time schedule where the ideal situation would be to never go above *GOOD* and never below *PAIN*. To do this we need to add a new dose at a time maximizing time spent within the interval. 
 ## 4. Socratic Questioning
 ### a) 
  - *Question:* Have you done a plot of the data points in a graph?
