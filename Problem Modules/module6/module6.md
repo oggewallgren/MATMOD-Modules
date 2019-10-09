@@ -75,11 +75,24 @@ Adding the term $-rk$ gives us the equaiton $k'=(a-bw)k-rk$. Our first interpret
 ### f)
 We can find a few different ways to improve the model. One thing we noticed is that with the code and starting values given, the whale population can become negative. An improvement to the model is to not allow this. Considering that we analyze the fishing of krill, it is reasonable to also include hunting of whales, as this also affects the populations. Another thing that should be taken into cosideration is that if whales go extinct, krill population moves towards infinity. This is unreasonable as the krill also feeds on something. The population of krill should have a limit.
 ## 2. Signal Processing Problem
-Starting with the first graph generated from the code we interpret it as a visualization of what the x-axis represents. The two following graphs shows the same thing in different scales. With the steps as input and y-axis representing the output from the digital signal processing component. This is one signal as input at a graph as output. When using a step function and sine waves of different frequencies the graph shows how the digital signal processing component changes the sound. Summarazing our observations we can see that for all input frequencies, the output frequency doens't change. On the other hand, the amplitude changes for different frequencies. For large frequencies the ampitude is smaller, and for low frequencies the amplitude is the same.
-![](smoothgraph1.png)![](smoothgraph200.png)
-200hrtz
-![](graph1.png)![](graph2.png)
-2000hrtz
+We started by analyzing the diffrent plots with diffrent frequencies. The first thing we noticed was when using low frequencies for both the input function and the output function. For $frequency=200$. We get the two plots below. 
+
+![](smoothgraph1.png)
+![](smoothgraph200.png)
+
+If we analyze theese figures we see that they are almost identical except that they are faceshifted a bit. This does not tell us much, it's likely that this is just the delay between input and output of sound. What's actually intresting is that they are so alike. When inputting low frequencies we get a big similarity between output and input. If we now insted look at the plots when the frequency for both of them are high, we get another interesting result. 
+
+
+![](graph1.png)
+![](graph2.png)
+
+Theese figures above represents the two plots at $frequency = 2000$. From this frequency we can see a much more distinct difference. The amplitude of the output sound is much smaller than for the input sound. From the input sound we can also see that it has spikes instead of rounded tops. From the lower frequencies we noticed that both the input and the output looks a lot like sinus waves, but when we increase the frequency, the input turning points becomes sharp and the whole output plot becomes trunquated. These spikes are a result of having too few samplingpoints for such a high frequency. When this happens the amplitude of the output decreases. 
+
+Since the component would reduce the high frequencies in sound, we think it's reasonable that such a component could be used to remove distorions in sound. That the component is used in variety of ways with the purpose of reducing/removing high frequency buzz and interference from audio. 
+
+If we spoke into the equation we believe that the output would not be as clear as our regular speaking voice. That it would be more flat and harder to interpret. We believe this beacause voice frequency is usually said to be between 300 and 3000 Hz, and with this component we start to reduce the amplitude of sounds much earlier than 3000 Hz. 
+
+
 ## 3. Drug Dosage Problem
 To be able to find a model for drog dosage we first need to discuss what happens taking only one dose. It seems reasonable that the blood concentration should follow function with a steep angle upwards and a flatter line going down. This is because the active substance can be released quickly into the system but stays there longer. This is visualized in the graph below:
 ![](up3drugdose.jpeg)
@@ -93,8 +106,6 @@ To find a good model we want to find a time schedule where the ideal situation w
  - *Question:* Can you guess the form of the function? *Discussion errupts*.
  - *Question:* Based on the form you guessed, can you use the values in the table to deffine the function more precisely to fit the data? Can it be justified?
   
-
-
 
 ### b)
  - *Question:* Have you plotted the function in combination with points? How well does your function fit with all the points?
