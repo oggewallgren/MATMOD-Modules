@@ -75,8 +75,11 @@ Adding the term $-rk$ gives us the equaiton $k'=(a-bw)k-rk$. Our first interpret
 ### f)
 We can find a few different ways to improve the model. One thing we noticed is that with the code and starting values given, the whale population can become negative. An improvement to the model is to not allow this. Considering that we analyze the fishing of krill, it is reasonable to also include hunting of whales, as this also affects the populations. Another thing that should be taken into cosideration is that if whales go extinct, krill population moves towards infinity. This is unreasonable as the krill also feeds on something. The population of krill should have a limit.
 ## 2. Signal Processing Problem
-Starting with the first graph generated from the code we interpret it as a visualization of what the x-axis represents. The two following graphs shows the same thing in different scales. With the steps as input and y-axis representing the output from the digital signal processing component. This is one signal as input at a graph as output. When using a step function and sine waves of different frequencies the graph shows how the digital signal processing component changes the sound. Summarazing our observations we can see that for all input frequencies, the output frequency doens't change. On the other hand, the amplitude changes for different frequencies. For large frequencies the ampitude is smaller, and for low frequencies the amplitude is the same. 
+Starting with the first graph generated from the code we interpret it as a visualization of what the x-axis represents. The two following graphs shows the same thing in different scales. With the steps as input and y-axis representing the output from the digital signal processing component. This is one signal as input at a graph as output. When using a step function and sine waves of different frequencies the graph shows how the digital signal processing component changes the sound. Summarazing our observations we can see that for all input frequencies, the output frequency doens't change. On the other hand, the amplitude changes for different frequencies. For large frequencies the ampitude is smaller, and for low frequencies the amplitude is the same.
+![](smoothgraph1.png)![](smoothgraph200.png)
+200hrtz
 ![](graph1.png)![](graph2.png)
+2000hrtz
 ## 3. Drug Dosage Problem
 
 ## 4. Socratic Questioning
