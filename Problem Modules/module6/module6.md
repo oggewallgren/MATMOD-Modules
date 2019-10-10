@@ -98,7 +98,7 @@ To be able to find a model for drog dosage we first need to discuss what happens
 
 ![](up3drugdose.jpeg)
 
-Let the grey line descrie blood concentration of a substance over time. What the line shows us is dosage which is the magnitude peak and how much the body breaks it down over time. Let's say that this equation is $y=1-\frac{x}{5}$ until $y$ reaches zero. This works as a model for blood concentration of one dose with dosage $m$. 
+Let the grey line descrie blood concentration of a substance over time. What the line shows us is dosage which is the magnitude peak and how much the body breaks it down over time. Let's say that this equation is $y=m-\frac{x}{5}$ until $y$ reaches zero. This works as a model for blood concentration of one dose with dosage $m=1$. 
 
 To find a good model we want to find a time schedule where the ideal situation would be to never go above *HIGH DOSE* and never below *PAIN*. To do this we need to add a new dose at a time maximizing time spent within the interval. 
 We know that a formula for the optimal dosage is going to look something like: 
@@ -106,6 +106,25 @@ $$
 D=\text{wanted value}-\text{current value}
 $$
 The dosage is going to be dependent on what concentration we want to achieve and what the current concentration. The equation for time interval is going to depend on digestion speed. 
+
+We start by breaking it down to if we can find the time interval if the dosage stays the same for all doses. If this is the case, we only need to decide what a reasonable concentraion is. Let's use the same values as in the graph where one dose is $1$. To stay above the *PAIN* level we want to add a dose after 2 hours. The paramaters we have to consider is:-
+- time of decay $(r)$
+- desired concentration $(c)$
+- dosage $(D)$
+The time interval $I$ can then be described with the formula:
+$$
+I = \frac{cr}{D} = \frac{1*4}{1}=4
+$$
+This says that the time for a dose to decay is 4 hours. But as we want to add a new dose halfway through the dose we divide the answer by $2$. Giving us the equation:
+$$
+I=\frac{cr}{2D}
+$$
+This gives us the interval saying that one should take a new dose after 2 hours.
+
+The same formula can be used to find the appropriate dose. This looks like this. 
+$$
+D=\frac{cr}{2I}
+$$
 ## 4. Socratic Questioning
 ### a) 
  - *Question:* Have you done a plot of the data points in a graph?
