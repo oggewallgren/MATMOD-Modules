@@ -94,6 +94,21 @@ If we spoke into the equation we believe that the output would not be as clear a
 
 
 ## 3. Drug Dosage Problem
+To find the optimal drug dosage considering time interval and some kind of upper and lower limit of what is a "good" interval of concentration. We know that the dose value is going to be constant and same for each dose. As we want the concentration to always be below max limit and above minimum limit. Reasonably the dose is then going to be $maxC-minC$. This is visualized in the figure below:
+
+![](drugdose.jpeg)
+
+To find the time interval between doses we need to consider the rate of decay for the dose, meaning how long it takes for the dose to go below $minC$. If we know how long it takes for the concentration to reach $minC$ we can find the time interval. Let's say that we have time to absorb a dose $r$ and dose size $d$. Then we have a function for concentration over time:
+$$
+f(t)= \begin{cases}
+    0 & t=-1 \\
+    rf(t-1)+d  & r \text{ mod } t \equiv 0 \\
+    rf(t-1) & else
+\end{cases}
+$$
+This means that when time is negative, meaning before we started taking a dose. Nothing should happen. When time is $0$ or when time to absorb the dose has elapsed, another dose should be taken. Else, then keep breaking down the dose until time to break down has elapsed. With this model we have a function representing the concentration for each time interval. 
+
+
 To be able to find a model for drog dosage we first need to discuss what happens taking only one dose. It seems reasonable that the blood concentration should follow function with a steep angle upwards and a flatter line going down. This is because the active substance can be released quickly into the system but stays there longer. This is visualized in the graph below:
 
 ![](up3drugdose.jpeg)
