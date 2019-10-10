@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Reflection 5</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="reflection-5">Reflection 5</h1>
+<h2 id="general-info">General info</h2>
+<ul>
+<li>
+<p>FIRE group number 75</p>
+</li>
+<li>
+<p>module number 5</p>
+</li>
+<li>
+<p>By</p>
+<ul>
+<li>Oskar Wallgren, 960107-2292, IT, <a href="mailto:oskarwallgren@icloud.com">oskarwallgren@icloud.com</a></li>
+<li>Hugo Cliffordson, 970917-5799, IT, <a href="mailto:cliffords.contact@gmail.com">cliffords.contact@gmail.com</a></li>
+</ul>
+</li>
+<li>
+<p>&quot;We hereby declare that we have both actively participated in solving every exercise. All solutions are entirely our own work, without having taken part of other solutions.</p>
+</li>
+<li>
+<p>Number of hours spent for each one of you</p>
+<ul>
+<li>Both 14h</li>
+</ul>
+</li>
+<li>
+<p>Number of hours spent in supervision for this module</p>
+<ul>
+<li>4h</li>
+</ul>
+</li>
+</ul>
+<h2 id="weekly-meeting-and-demonstration">WEEKLY MEETING AND DEMONSTRATION</h2>
+<h3 id="a-did-you-have-your-compulsory-weekly-meeting-with-a-supervisor">a) Did you have your compulsory weekly meeting with a supervisor?</h3>
+<p>Yes we met and discussed issues with sticking balls and different ways to solve the issue.</p>
+<h3 id="b-did-you-demonstrate-your-code-to-a-supervisor-if-not-please-try-to-do-so-before-submitting-your-reflection">b) Did you demonstrate your code to a supervisor? (If not, please try to do so before submitting your reflection).</h3>
+<p>Yes we demonstrated it twice for different supervisors.</p>
+<h2 id="ii-what-did-you-experience-and-learn">II. WHAT DID YOU EXPERIENCE AND LEARN?</h2>
+<p>One thing we learned on this module was how to methodically handle bugs. When we noticed a bug, we did not try to hot fix it by looking for tweaks in the code that could eliminate the bug. Instead, we started analyzing the origin of the bug mathematically and double check our calculations and edge cases. This usually led us to fixing the bug.</p>
+<p>Another thing we learned that goes hand in hand with the calculations, is the <em>divide and conquer</em> technique, where we divided the problem into subproblems. Then we ensured ourselves that we understood the subproblem by drawing figures, an example of this could be the collision of balls. See figure, note that everything in the figure might not be correct, but it gives an idea of how we worked to model the problems.
+<img src="file:////Users/Oskar/Chalmers/matmod/MATMOD-Modules/Problem Modules/module5/relfection5.jpeg" alt=""></p>
+<p>One bug we encountered was balls sticking together. We first thought that this could be solved by adding an offset to the collision point. But when we started to analyze why it happened, we saw that it wouldn't make a difference based on the mathematics used. This led us to analyze our implementation of the mathematics where we found a small calculation error. This fixed the sticking balls problem.</p>
+<p>Another issue we encountered is ball picking up energy and heavily increasing in speed. We discussed this issue with a supervisor and learned that it is better to update the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>-position with the average speed of the speed before gravity and directly after. This solved this issue. Before we added this, our solution was to skip gravity when a collision occurred.</p>
+<p>As to the modularity of the program, we started to write the algorithms in place without adding any methods or objects. When we felt confident about the responsibility of the different parts of the code. We divided it into two methods, <code>ballCollission()</code>and <code>borderCollission()</code>. We did the same thing for some functionality in the ball class. This was to avoid confusion and we believe it made our development process better.</p>
+<p>Comparing our code to the given pseudocode, we can see that we used a conversion between rectangular and polar coordinates but without creating the class <code>Point</code> to hold the vector. Instead we added the necessary variables to the ball class. Reflecting on it now, it may have been a better solution to adapt the ball class. However, we are satisfied with the simplicity in the outcome of our solution. Comparing how we solved the collision with the example given, we see that the solutions are very similar. This is probably because we took inspiration from Robin's example in the module introductory lecture and discussions with supervisors.</p>
+<h2 id="iii-additional-question">III. ADDITIONAL QUESTION</h2>
+<p>Similarity between this module and past modules is the way we have learned to approach a problem. Just like for other problems we started to discuss the different components and divide it into subproblems. We also used drawings and figures to visualize our thoughts to each other along the entire process of solving the problem.</p>
+<p>One thing that differentiates this module from other modules is how we know our solution is the best one. For past modules we have always tried to disprove our solutions as this gives us a clue of how good it is. For this module, all we had to do was to run the code and visually see what went wrong. Trying different speeds and starting points we could &quot;disprove&quot; our solution just by running it in the editor.</p>
+<p>Considering that we are not the best programmers of our year, we do not take the detailed code quality into consideration in the self-check. We believe that our strategy and iterations of solving the bouncing balls problem was very good.</p>
+
+    </body>
+    </html>
