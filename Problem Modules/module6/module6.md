@@ -82,19 +82,24 @@ Starting with the first graph generated from the code we interpret it as a visua
 2000hrtz
 ## 3. Drug Dosage Problem
 To be able to find a model for drog dosage we first need to discuss what happens taking only one dose. It seems reasonable that the blood concentration should follow function with a steep angle upwards and a flatter line going down. This is because the active substance can be released quickly into the system but stays there longer. This is visualized in the graph below:
+
 ![](up3drugdose.jpeg)
 
-To find a good model we want to find a time schedule where the ideal situation would be to never go above *GOOD* and never below *PAIN*. To do this we need to add a new dose at a time maximizing time spent within the interval. 
+Let the grey line descrie blood concentration of a substance over time. What the line shows us is dosage which is the magnitude peak and how much the body breaks it down over time. Let's say that this equation is $y=1-\frac{x}{5}$ until $y$ reaches zero. This works as a model for blood concentration of one dose with dosage $m$. 
+
+To find a good model we want to find a time schedule where the ideal situation would be to never go above *HIGH DOSE* and never below *PAIN*. To do this we need to add a new dose at a time maximizing time spent within the interval. 
+We know that a formula for the optimal dosage is going to look something like: 
+$$
+D=\text{wanted value}-\text{current value}
+$$
+The dosage is going to be dependent on what concentration we want to achieve and what the current concentration. The equation for time interval is going to depend on digestion speed. 
 ## 4. Socratic Questioning
 ### a) 
  - *Question:* Have you done a plot of the data points in a graph?
   
  - *Question:* What can we say about the data points? Are they linnear or not?
  - *Question:* Can you guess the form of the function? *Discussion errupts*.
- - *Question:* Based on the form you guessed, can you use the values in the table to deffine the function more precisely to fit the data? Can it be justified?
-  
-
-
+ - *Question:* Based on the form you guessed, can you use the values in the table to define the function more precisely to fit the data? Can it be justified?
 
 ### b)
  - *Question:* Have you plotted the function in combination with points? How well does your function fit with all the points?
