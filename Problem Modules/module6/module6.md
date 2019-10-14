@@ -17,9 +17,13 @@
  
 ## 1. Whales and Krill Problem
 ### a)
+Given the equations $k'=(a-bw)k$ and $w'=(-m+nk)w$ we can analyze what happens when we set some variables to different values. Let's say for example that there are no whales present $w=0$, then $k'=ak$ which means that rate of change for the krill population is a constant times current population. This tells us that $a$ represents some kind of standard rate of change if there wouldn't be any whales present. Given this, we can assume that $b$ stands for how much a given whale population affects rate of change for the krill population.
+
+For $w'$ we can see similarities to $k'$. When the krill population is zero, rate of change is going to be $-mw$. We can see that it is only dependent on current whale population and some constant. The constant $m$ represents a decrease of whale population which is reasonable. Without any krill, the whales will not have any food and therefore decrease in population. Let's say that there there are krill present, then rate of change is going to change in the positive direction. More food for whales results in a healthier population where there are better conditions for reproduction. The effect a krill population has on the rate of change for whales are described with the constant $n$.
+
+Now that we have interpreted the constants it is reasonable that the equation system tells us the affect krill and whale population have on the rate of change of the populations. When there are a lot of whales, the krill population decreases and when there are few whales the krill population increases. The same goes for the whale population but in reverse. When there are a lot of krill the population have a better chance to grow, otherwise it decreases. 
+
 ### b)
- 
- 
 We know we have an equilibrium when rate of change is zero, $k' \text{ and } w'= 0$. From the first equation $w'=(-m+nk)w=0$ Directly we can see that there is an equilibrium when $w=0$. We can also simplify it. 
 $$
 (-m+nk)w=0 \\
