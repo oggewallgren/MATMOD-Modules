@@ -47,6 +47,49 @@ $$
 This describes the probability that a single car rented in $A$ is in $A$ after $n$ rentals.
 ### b)
 
+To find out what proportion of cars will be in $A$ and $B$ after a long time we need find an equlibrium. This means that after a long time the proportion of cars will be the same and we have found a steady state. 
+
+To do this we need to find the probability vector in stable state for our tranistion matrix: 
+$$
+P=
+\begin{bmatrix}
+    0.6 & 0.4 \\ 0.3 & 0.7
+\end{bmatrix}
+$$
+
+We do this by solving: 
+$$
+\begin{bmatrix}
+    X & Y 
+\end{bmatrix}*
+\begin{bmatrix}
+    0.6 & 0.4 \\ 0.3 & 0.7
+\end{bmatrix}=
+\begin{bmatrix}
+    X & Y 
+\end{bmatrix}
+$$
+We know that $X + Y = 1$ so the calculation for the probability vector in stable state will be:
+
+![](markov1.jpeg)
+
+This tells us that we have found the point where the proportion of cars starts to stabalize after a long time. The proportion of cars will be $43\%$  in $A$ and $57\%$ in $B$.
+
+We can control this by checking against our transition matrix after a large number of steps to see the probability of where cars will move depending on state:
+
+$$
+P^{1000}=
+\begin{bmatrix}
+    0.6 & 0.4 \\ 0.3 & 0.7
+\end{bmatrix}^{1000}\approx
+
+\begin{bmatrix}
+    0.43 & 0.57 \\ 0.43 & 0.57
+\end{bmatrix}
+$$
+
+This tells us we have found our equlibrium and that the proprtion of cars will be: $43\%$  in $A$ and $57\%$ in $B$ in the long run.
+
 
 ## 3
 ## 4

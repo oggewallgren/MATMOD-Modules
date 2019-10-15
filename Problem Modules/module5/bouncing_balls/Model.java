@@ -25,14 +25,19 @@ class Model {
 		// Initialize the model with a few balls
 		balls = new Ball[2];
 		balls[0] = new Ball(width / 3, height * 0.9, 1.2, 1.2, 0.2);
-		balls[1] = new Ball(2 * width / 4, height * 0.4, -0.6, 0.6, 0.3);
+		balls[1] = new Ball(3 * width / 4, height * 0.4, -0.6, 0.6, 0.3);
 	}
 
 	void step(double deltaT) {
 		ballCollision();
 		borderCollision(deltaT);
+		
+		
 	}
 
+	/**
+	 * Handles collision between balls
+	 */
 	void ballCollision() {
 		for (int i = 0; i < balls.length - 1; i++) {
 			for (int j = i + 1; j < balls.length; j++) {
@@ -42,9 +47,9 @@ class Model {
 
 				double dx = b1.x - b2.x;
 				double dy = b1.y - b2.y;
-				double delta = b1.radius + b2.radius;
+				double sumRadius = b1.radius + b2.radius;
 
-				if (dx * dx + dy * dy <= delta * delta) {
+				if (dx * dx + dy * dy <= sumRadius * sumRadius) {
 					double angleDiff = Math.atan(dy / dx);
 
 					b1.rotateBall(-angleDiff);
@@ -63,32 +68,36 @@ class Model {
 		}
 	}
 
+	/**
+	 * handles collision between ball and border. Here we also handle gravity.
+	 */
 	void borderCollision(double deltaT) {
 		for (Ball b : balls) {
 			// detect collision with the border
 			if (b.x < b.radius || b.x > areaWidth - b.radius) {
-				b.vx *= -1; // change direction of ball
+				b.vx *= -1;
 			}
 
 			if (b.y < b.radius) {
+				// checks direction of ball when hitting a border
 				if (b.vy < 0) {
 					b.vy = -b.vy;
 				} else {
 					b.vy = b.vy;
 				}
 			} else if (b.y > areaHeight - b.radius) {
+				// checks direction of ball when hitting a border
 				if (b.vy < 0) {
 					b.vy = b.vy;
 				} else {
 					b.vy = -b.vy;
 				}
-			} else {
-				b.vy = b.vy - 5.8 * deltaT;
 			}
 
-			// compute new position according to the speed of the ball
 			b.x += deltaT * b.vx;
-			b.y += deltaT * b.vy;
+			b.y += deltaT * (b.vy + (b.vy - gravity * deltaT)) / 2; // uses the avarage speed before and after gravity
+																	// to avoid getting stuck to the wall
+			b.vy = b.vy - gravity * deltaT;
 		}
 	}
 
@@ -102,7 +111,6 @@ class Model {
 		 * attributes.
 		 */
 		double x, y, vx, vy, radius, mass, speed, angle;
-		// , angle;
 
 		Ball(double x, double y, double vx, double vy, double r) {
 			this.x = x;
@@ -110,15 +118,18 @@ class Model {
 			this.vx = vx;
 			this.vy = vy;
 			this.radius = r;
+			// we wanted a way to relate size to mass.
 			this.mass = this.radius * 2;
 		}
 
+		// changes direction of the balls based on relative angle upon impact.
 		void rotateBall(double angleDiff) {
 			rectToPolar();
 			angle += angleDiff;
 			polarToRect();
 		}
 
+		// converts from rectangular to polar coordinates
 		void rectToPolar() {
 			speed = Math.sqrt(vx * vx + vy * vy);
 			angle = Math.atan(vy / vx);
@@ -127,6 +138,7 @@ class Model {
 			}
 		}
 
+		// converts from polar to rectangular coordinates
 		void polarToRect() {
 			vx = Math.cos(angle) * speed;
 			vy = Math.sin(angle) * speed;
