@@ -151,7 +151,43 @@ $$
 $$
 
 This is important because the site's location could affect the number of rentals made in each of the sites. Imagine that one of the sites is located at the airport and the other at a random place outside of a city. Since the probability of where the car is returned varies between the sites, we need to take the frequency of rentals at a site at a time into consideration. 
-## 3. TEXT GENERATION 
+## 3. TEXT GENERATION
+We approach the problem by selecting a text which will be used as our input. First text we try is a song lyric. We start by testing the text with order 1 and see that the text doesn't make any sense. Letters are all mixed up. One thing we notice is that most words are still possible to pronounce, this is because consonants often are followed by a vowel rather than another consonant. 
+
+When we change the order to 2, we can see that the output text becomes even more readable, even though few "words" are actual words. We have for instance the entire word "guessed" followed by "nobody" which both are medium sized correct words. Most words are still jibberish, but pronoucable. 
+
+Changing to order 3, the text has a majority of real words even though they do not build up complete logical sentences. 
+
+We we have order 4, we start seeing sentences that make sense. We can even see combination of words that are the same as in the input text. 
+
+With order 5, almost every word are actual words, and we see many similarities between the input and output texts. 
+
+We tried this with different types of input texts and different orders. Trying different languages also returns the same result. 
+
+What we learned from observing the different outputs with order 1, is that it didn't make a lot of sense since the algorithm only looks back one letter when determining the next one. However we could se similarities between the outputs using diffrent inputs. The similarities occured with letters that are rarely used. Since they are rarely used the possible letters after this letter are few and this lead to a recognizable pattern. When the program moved to next letter after the rare one, it got confusing right away. This is because the randomized letter with a common letter before has much more possibilities for outputs. 
+
+Increasing the order we follow a pattern of the output text becoming more similar to the input text. This is because increasing the number of letters the alorithm is looking back on, we narrow the probability of what letters can appear next. Meaning, when increasing the order to near the maximum, we can see many sequences that also is found in the input. That is because it not only look back on the previous letters, it utilized the entire matrix for the input text that it creates to see that some sequences are repetetive in the input. This increases the probability of getting the right letter, many times in a row. 
+
+To conclude we can say that to make the output recognizable so that it is similar to the input. It is good the maximize the steps we are looking back so that the probability of getting the right letter next increases. An extension to this could be to add pattern rocognition. This would make it possible the see sequenses of words appearing several times in a text compared to words appearing for the first time. 
 ## 4
+Let's start by defining what we know: We denote a person having the disease with $A$ and a positive test result with $B$. With these variables we set know:
+- Probability that a person jas the disease: $P[A]=0.0033$
+- Probability that the test shows positive given that a person has the disease $P[A|B]=0.99$
+- Probability that a test shows positive given that a person does not have the disease: $P[B|A]=0.03$
+
+Given these probabilities we want to find the probability that a person is sick, given that the test shows positive $P[A|B]$. To find this we can use Bayes' theorem:
+$$
+P[A|B]=\frac{P[A]*P[B|A]}{P[B]}
+$$
+First we need to find $P[B]$ which is the probability that a test shows positive. We know this to be the sum of the people having the disease and getting a correct diagnose and all healthy people getting the wrong diagnose. We know that $0.33\%$ of the population have the disease. Out of these, $99\%$ will get the correct diagnose, meaning they will get a positive test diagnose. With this we know that $99.67\%$ of the population is healthy and out of these, $3\%$ will get a positive test result. Given this, we can calculate the probability of getting a positive test result.
+$$
+P[B]=0.0033*0.99+0.9967*0.03=0.033168
+$$
+This gives us the equation:
+$$
+P[A|B]=\frac{P[A]*P[B|A]}{P[B]}=\frac{0.0033*0.99}{0.033168}=0.0985 
+$$
+The probability of a person having the disease given a positive test result is $9.95\%$.
 ## 5
+
 ## 6
