@@ -90,7 +90,12 @@ $$
 
 This tells us we have found our equlibrium and that the proprtion of cars will be: $43\%$  in $A$ and $57\%$ in $B$ in the long run.
 
-
+### c)
+To find a function of time describing expected number of cars at each site, we first need to define time in terms of rentals. Let's assume that time $t$ is in unit of days and represents $4$ rentals per day. For the formula we need to consider some variables:
+- $I_A$: initial number of cars in $A$.
+- $I_B$: initial number of cars in $B$.
+- $\bold{T_c}$: total number of cars $=I_A+I_B$.
+Let's describe the inital number of cars a a vector $[I_A  I_B]$
 ## 3
 ## 4
 ## 5
