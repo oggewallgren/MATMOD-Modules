@@ -193,20 +193,23 @@ The probability of a person having the disease given a positive test result is $
 ## 6
 Approaching the problem of predicting the weather for May 19th, we first have to evaluate the given options:
 
-- The relative frequency of precipitation on May 19 for the last five years
+- **The relative frequency of precipitation on May 19 for the last five years**
 
 The positives of basing the prediction on the relative frequency of precipitatin on May 19 for the last five years is that reasonable, the earth's planetary position and distance to the sun should be the same for all data points. This is viewed positive as the sun has a large impact on weather. Even though basing our prediction on the same date is generally good, one outlier could have a large impact on our prediction given these few data points.
 
-- The relative frequency of precipitation on all days in May during these years
+- **The relative frequency of precipitation on all days in May during these years**
 
-Basing our prediction on a sample of relative preception frequency for all days in May includes more data points. This decreases the risk of few ouliers having a large negative influence on our prediction. One could also argue that since weather is reasonably similar throughout the month, even data points long from the given date is relevant.
+Basing our prediction on a sample of relative preception frequency for all days in May includes more data points. This decreases the risk of few ouliers having a large negative influence on our prediction. One could also argue that since weather is reasonably similar throughout the month, even data points days from the given date is relevant.
 
-- The relative frequency of precipitation on all days during these years?
+- **The relative frequency of precipitation on all days during these years?**
 
-We don't want to use a sample from all days the past five years as this data would not give us correct information for the specific month of May. 
+We don't want to use a sample from all days the past five years as this data would not give us correct information for the specific month of May. We would have much data wich is usually good for giving a good probability, the majority of the data would be misleading since its not telling us much about the weather in may. Its reasonable that ther percipitation frequency in december will not tell us much about may 19. 
 
+Considering all of these pros and cons about the models we think it reasonable to choose: **The relative frequency of precipitation on all days in May during these years**.
 
+Analyzing the same models but with data gathered from the past hundred years we arrive at the same conclusion, to consider all dates in May. We believe that if we were to choose the model that only takes May 19 into consideration we still only have 100 data points. This is still a small sample and it would not produce a reliable result. If we were to choose all days within a hundred years as the last model suggest, we have the same issue as before but worse. We have a huge set of data but many of these data points would be useless. 
 
+For all three models there is something important we have to consider. When choosing the model, we have to make critical assumptions. Examples of this is that the weather climate has remained the same throughout the 100 years. We know that this is not true due to pollution factours, industrial growth and large increases in human population. Considering that these assumptions has to be made and that they are dependant on so many variables we believe that choosing a model does require human judgement. However, this must not always be the case. If we were model a problem that we human could not give valueble input to, e.q quantum problems that we can't visualize or determine based on history. This could be a situation where a computer would do a better job of choosing the model based on the set of rules we can define for the problem. 
 
 
 
