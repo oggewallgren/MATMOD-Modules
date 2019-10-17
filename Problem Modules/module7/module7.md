@@ -191,3 +191,22 @@ The probability of a person having the disease given a positive test result is $
 ## 5
 
 ## 6
+Approaching the problem of predicting the weather for May 19th, we first have to evaluate the given options:
+
+- The relative frequency of precipitation on May 19 for the last five years
+
+The positives of basing the prediction on the relative frequency of precipitatin on May 19 for the last five years is that reasonable, the earth's planetary position and distance to the sun should be the same for all data points. This is viewed positive as the sun has a large impact on weather. Even though basing our prediction on the same date is generally good, one outlier could have a large impact on our prediction given these few data points.
+
+- The relative frequency of precipitation on all days in May during these years
+
+Basing our prediction on a sample of relative preception frequency for all days in May includes more data points. This decreases the risk of few ouliers having a large negative influence on our prediction. One could also argue that since weather is reasonably similar throughout the month, even data points long from the given date is relevant.
+
+- The relative frequency of precipitation on all days during these years?
+
+We don't want to use a sample from all days the past five years as this data would not give us correct information for the specific month of May. 
+
+
+
+
+
+
