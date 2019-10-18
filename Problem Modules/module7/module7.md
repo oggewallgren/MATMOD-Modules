@@ -189,6 +189,31 @@ P[A|B]=\frac{P[A]*P[B|A]}{P[B]}=\frac{0.0033*0.99}{0.033168}=0.0985
 $$
 The probability of a person having the disease given a positive test result is $9.95\%$.
 ## 5
+Studyind the Asia online application with different input that objects not directly connected to eachother can have an effect on their outcome probability. Analyzing how the probability of having bronchitis changes as we change the input for XRay result, we observe that an abnormal result yields a $50.63\%$ risk of having bronchitis and normal result yields a $44.3\%$ risk. 
+
+Let's structure the variables with a drawing:
+
+![](prob5.jpeg)
+
+Given this, the joint probability distribution $p(x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8)$can be described with cause/effect relationship:
+$$
+p(x1)p(x_2)p(x_3|x_1)p(x_4|x_2)p(x_5|x_2)p(x_6|x_3,x_4)p(x_7|x_6)p(x_8|x_5,x_6)
+$$
+
+This describes each variable's connection to eachother, for example: $p(x_3|x_1)$: $x_3$ is connected to $x_1$. We also have $p(x_8|x_5,x_6)$ which describes that $x_8$ is connected to both $x_5$ and $x_6$. 
+
+When analyzing the online Asia app and seeing that these values change, we are observing how Bayes' theorem can tell us to update current values expressed as a probability distribution. This is expressed as 
+$$
+p(x|\text{info})=\frac{1}{p(\text{info})}p(x)p(\text{info}|x)
+$$
+When we update a value and tell our model that we have got new information, the info becomes a constant.
+$$
+p(x|\text{info = value})\propto p(x)p(\text{info = value}|x)
+$$
+This notation describes posterior, prior and a likelyhood function. In this example, $p(x|\text{info = value})$ is posterior, $p(x)$ is prior and $p(\text{info = value}|x)$ is the likelyhood function. This can be applied to the previous problem when describing the probability that someone is sick, given a positive test result. In this case, $x$ would represent that someone is sick and info is the positive test result. The probability that someone is sick given a positive test result is $p(x|\text{ info = value})$, the posterior probability (when we have taken everything else into account).
+
+When we are updating the value for the XRay, we are giving values to the likelyhood function. The XRay $x_7$ is connected to *Tubercolosis or Cancer* $x_6$ with $p(x_7|x_6)$ as defined above. As we are giving a value to XRay we are changing the value for $x_7$, $p(x_7=\text{positive}|x_6)$ With this likelyhood function and a prior probability for $p(x_6)$ We can calculate $p(x_6|x_7=\text{ positive })$. With this new probability value for $x_6$ we can calculate the posterior probabilities for all other variables connected to it. This is why something not directly connected to $x_7$ can change as it is given an updated value. How all of these are connected with updates values can also be visualized in a table
+
 
 ## 6
 Approaching the problem of predicting the weather for May 19th, we first have to evaluate the given options:
