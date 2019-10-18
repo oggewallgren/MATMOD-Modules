@@ -123,7 +123,7 @@ $$
     A_C & B_C
 \end{bmatrix}
 $$
-Both these models does not consider the variation over time in rentals. Reasonably, number of rentals changes for day to day correlated to e.g. vacations etc. This could be described rentals as a function of time, which takes this into consideration $n(t)$.
+Both these models do not consider the variation over time in rentals. Reasonably, number of rentals changes for day to day correlated to e.g. vacations etc. This could be described rentals as a function of time, which takes this into consideration $n(t)$.
 $$
 \begin{bmatrix}
     I_A & I_B
@@ -164,14 +164,14 @@ With order 5, almost every word are actual words, and we see many similarities b
 
 We tried this with different types of input texts and different orders. Trying different languages also returns the same result. 
 
-What we learned from observing the different outputs with order 1, is that it didn't make a lot of sense since the algorithm only looks back one letter when determining the next one. However we could se similarities between the outputs using diffrent inputs. The similarities occured with letters that are rarely used. Since they are rarely used the possible letters after this letter are few and this lead to a recognizable pattern. When the program moved to next letter after the rare one, it got confusing right away. This is because the randomized letter with a common letter before has much more possibilities for outputs. 
+What we learned from observing the different outputs with order 1, is that it didn't make a lot of sense since the algorithm only looks back one letter when determining the next one. However, we could se similarities between the outputs using diffrent inputs. The similarities occured with letters that are rarely used. Since they are rarely used the possible letters after this letter are few and this led to a recognizable pattern. When the program moved to next letter after the rare one, it got confusing right away. This is because the randomized letter with a common letter before has much more possibilities for outputs. 
 
-Increasing the order we follow a pattern of the output text becoming more similar to the input text. This is because increasing the number of letters the alorithm is looking back on, we narrow the probability of what letters can appear next. Meaning, when increasing the order to near the maximum, we can see many sequences that also is found in the input. That is because it not only look back on the previous letters, it utilized the entire matrix for the input text that it creates to see that some sequences are repetetive in the input. This increases the probability of getting the right letter, many times in a row. 
+Increasing the order, we follow a pattern of the output text becoming more similar to the input text. This is because increasing the number of letters the alorithm is looking back on, we narrow the probability of what letters can appear next. Meaning, when increasing the order to near the maximum, we can see many sequences that also is found in the input. That is because it not only looks back on the previous letters, it utilized the entire matrix for the input text that it creates to see that some sequences are repetetive in the input. This increases the probability of getting the right letter, many times in a row. 
 
 To conclude we can say that to make the output recognizable so that it is similar to the input. It is good the maximize the steps we are looking back so that the probability of getting the right letter next increases. An extension to this could be to add pattern rocognition. This would make it possible the see sequenses of words appearing several times in a text compared to words appearing for the first time. 
 ## 4
 Let's start by defining what we know: We denote a person having the disease with $A$ and a positive test result with $B$. With these variables we set know:
-- Probability that a person jas the disease: $P[A]=0.0033$
+- Probability that a person has the disease: $P[A]=0.0033$
 - Probability that the test shows positive given that a person has the disease $P[A|B]=0.99$
 - Probability that a test shows positive given that a person does not have the disease: $P[B|A]=0.03$
 
@@ -210,10 +210,34 @@ When we update a value and tell our model that we have got new information, the 
 $$
 p(x|\text{info = value})\propto p(x)p(\text{info = value}|x)
 $$
-This notation describes posterior, prior and a likelyhood function. In this example, $p(x|\text{info = value})$ is posterior, $p(x)$ is prior and $p(\text{info = value}|x)$ is the likelyhood function. This can be applied to the previous problem when describing the probability that someone is sick, given a positive test result. In this case, $x$ would represent that someone is sick and info is the positive test result. The probability that someone is sick given a positive test result is $p(x|\text{ info = value})$, the posterior probability (when we have taken everything else into account).
+This notation describes that the posterior is proportional to a prior and a likelyhood function. In this example, $p(x|\text{info = value})$ is posterior, $p(x)$ is prior and $p(\text{info = value}|x)$ is the likelyhood function. This can be applied to the previous problem when describing the probability that someone is sick, given a positive test result. In this case, $x$ would represent that someone is sick, and info is the positive test result. The probability that someone is sick given a positive test result is $p(x|\text{ info = value})$, the posterior probability (when we have taken everything else into account).
 
 When we are updating the value for the XRay, we are giving values to the likelyhood function. The XRay $x_7$ is connected to *Tubercolosis or Cancer* $x_6$ with $p(x_7|x_6)$ as defined above. As we are giving a value to XRay we are changing the value for $x_7$, $p(x_7=\text{positive}|x_6)$ With this likelyhood function and a prior probability for $p(x_6)$ We can calculate $p(x_6|x_7=\text{ positive })$. With this new probability value for $x_6$ we can calculate the posterior probabilities for all other variables connected to it. This is why something not directly connected to $x_7$ can change as it is given an updated value. How all of these are connected with updates values can also be visualized in a table
 
+To better be able to explain what happens when new information is updates, we calculate $p(x_1, …, x_8)$ as a single big table as it is extended above. From the given values in *Probability, Uncertainty and Logic*, we can easily compute the full value. 
+$$
+p(x1)p(x_2)p(x_3|x_1)p(x_4|x_2)p(x_5|x_2)p(x_6|x_3,x_4)p(x_7|x_6)p(x_8|x_5,x_6) 
+= \\
+= 0.01*0.5*0.05*0.1*0.6*1*0.98*0.9=0.00001323
+$$
+Now that we have the standard values for the table, we can see what happens when we apply prior, posterior probability. We know that the posterior is going to be proportional to the prior times the likelyhood funciton. 
+
+The updated node probability $p(x_i | observation)..$ can be calculated as 
+$$
+p(x_i|observation) = \prod_{x_n}\sum_{x_n\isin \text{variables}-\text{observation}-x_i}p(x_1 \rarr x_n)
+$$
+What is meant by this is that we can calculate the probability of each variable given the new observed value for one of the variables. That is the product of the sum of all marginal distributions for every variable except for the value we want to calculate and the observed value. 
+
+If we would want to do this for the example $p(x_5|x_7=value)$, we would take 
+$$
+p(x_5|x_7=value)=\sum_{x_1}\sum_{x_1}\sum_{x_2}\sum_{x_3}\sum_{x_4}\sum_{x_5}\sum_{x_6}\sum_{x_8}p(x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8)
+$$
+Where $\sum_{x_1}$ is the marginal distribution for $x_1$ and
+$$
+p(x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8)=p(x1)p(x_2)p(x_3|x_1)p(x_4|x_2)p(x_5|x_2)p(x_6|x_3,x_4)p(x_7|x_6)p(x_8|x_5,x_6)
+$$
+
+Comparing a Bayesian network with a CLIPS expert system we can clearly see their differences. While a CLIPS expert system is fairly simple and works well when having clearly defined outcomes like, it rains $\rarr$ bring an umbrella. A bayesian network is better adapted for when we cannot make definite assertion. A classic example for this is in health care when making a diagnosis one cannot be entierly sure the diagnosis is correct. It is also favorable in making diagnosises as a test outcome can affect the probabilities for other diseases.
 
 ## 6
 Approaching the problem of predicting the weather for May 19th, we first have to evaluate the given options:
@@ -228,13 +252,10 @@ Basing our prediction on a sample of relative preception frequency for all days 
 
 - **The relative frequency of precipitation on all days during these years?**
 
-We don't want to use a sample from all days the past five years as this data would not give us correct information for the specific month of May. We would have much data wich is usually good for giving a good probability, the majority of the data would be misleading since its not telling us much about the weather in may. Its reasonable that ther percipitation frequency in december will not tell us much about may 19. 
+We don't want to use a sample from all days the past five years as this data would not give us correct information for the specific month of May. We would have much data wich is usually good for giving a good probability, the majority of the data would be misleading since its not telling us much about the weather in May. Its reasonable that ther percipitation frequency in december will not tell us much about May 19. 
 
 Considering all of these pros and cons about the models we think it reasonable to choose: **The relative frequency of precipitation on all days in May during these years**.
 
-Analyzing the same models but with data gathered from the past hundred years we arrive at the same conclusion, to consider all dates in May. We believe that if we were to choose the model that only takes May 19 into consideration we still only have 100 data points. This is still a small sample and it would not produce a reliable result. If we were to choose all days within a hundred years as the last model suggest, we have the same issue as before but worse. We have a huge set of data but many of these data points would be useless. 
+Analyzing the same models but with data gathered from the past hundred years we arrive at the same conclusion, to consider all dates in May. We believe that if we were to choose the model that only takes May 19 into consideration, we still only have 100 data points. This is still a small sample and it would not produce a reliable result. If we were to choose all days within a hundred years as the last model suggest, we have the same issue as before but worse. We have a huge set of data but many of these data points would be misleading. 
 
-For all three models there is something important we have to consider. When choosing the model, we have to make critical assumptions. Examples of this is that the weather climate has remained the same throughout the 100 years. We know that this is not true due to pollution factours, industrial growth and large increases in human population. Considering that these assumptions has to be made and that they are dependant on so many variables we believe that choosing a model does require human judgement. However, this must not always be the case. If we were model a problem that we human could not give valueble input to, e.q quantum problems that we can't visualize or determine based on history. This could be a situation where a computer would do a better job of choosing the model based on the set of rules we can define for the problem. 
-
-
-
+For all three models there is something important we have to consider. When choosing the model, we have to make critical assumptions. Examples of this is that the weather climate has remained the same throughout the 100 years. We know that this is not true due to pollution factours, industrial growth and large increases in human population. Considering that these assumptions has to be made and that they are dependant on so many variables we believe that choosing a model does require human judgement. However, this must not always be the case. If we were model a problem that we human could not give valueble input to, e.q quantum problems that we can't visualize or determine based on history. This could be a situation where a computer would do a better job of choosing the model based on the set of rules we can define for the problem.
